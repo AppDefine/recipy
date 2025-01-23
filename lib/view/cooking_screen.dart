@@ -12,30 +12,6 @@ class CookingScreen extends StatefulWidget {
 }
 
 class _CookingScreenState extends State<CookingScreen> {
-  bool _isCooking = false;
-  bool _isPaused = false;
-
-  void _startCooking() {
-    setState(() {
-      _isCooking = true;
-      _isPaused = false;
-    });
-  }
-
-  void _pauseCooking() {
-    setState(() {
-      _isCooking = false;
-      _isPaused = true;
-    });
-  }
-
-  void _resumeCooking() {
-    setState(() {
-      _isCooking = true;
-      _isPaused = false;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     final recipeName = widget.documentSnapshot['name'];
@@ -177,41 +153,6 @@ class _CookingScreenState extends State<CookingScreen> {
                     ),
                   );
                 },
-              ),
-              const SizedBox(height: 50),
-              // Buttons Section
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.green,
-                      padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 15),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20),
-                      ),
-                    ),
-                    onPressed: _isPaused ? _resumeCooking : (_isCooking ? null : _startCooking),
-                    child: Text(
-                      _isPaused ? "Resume Cooking" : "Start Cooking",
-                      style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16, color: Colors.white),
-                    ),
-                  ),
-                  ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.grey.shade300,
-                      padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 15),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20),
-                      ),
-                    ),
-                    onPressed: !_isCooking ? null : _pauseCooking,
-                    child: const Text(
-                      "Pause",
-                      style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16, color: Colors.black),
-                    ),
-                  ),
-                ],
               ),
             ],
           ),
