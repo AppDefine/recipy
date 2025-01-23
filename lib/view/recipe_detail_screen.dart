@@ -6,6 +6,7 @@ import 'package:iconsax/iconsax.dart';
 import 'package:recipy/controller/controller/ItemController.dart';
 import 'package:recipy/controller/controller/QuantityController.dart';
 import 'package:recipy/utils/constants.dart';
+import 'package:recipy/view/cooking_screen.dart';
 import 'package:recipy/widget/my_icon_button.dart';
 import 'package:recipy/widget/quantity_increment_decrement.dart';
 
@@ -31,8 +32,7 @@ class _RecipeDetailScreenState extends State<RecipeDetailScreen> {
         .toList();
 
     quantityController.setBaseIngredientAmounts(baseAmounts);
-    // Provider.of<QuantityProvider>(context, listen: false)
-    //     .setBaseIngredientAmounts(baseAmounts);
+
     super.initState();
   }
 
@@ -340,7 +340,16 @@ class _RecipeDetailScreenState extends State<RecipeDetailScreen> {
                       borderRadius: BorderRadius.circular(20), // Rounded corners
                     ),
                   ),
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => CookingScreen(
+                          documentSnapshot: widget.documentSnapshot,
+                        ),
+                      ),
+                    );
+                  },
                   child: const Text(
                     "Start Cooking",
                     style: TextStyle(
