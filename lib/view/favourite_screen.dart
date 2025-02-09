@@ -34,16 +34,19 @@ class _FavouriteScreenState extends State<FavouriteScreen> {
     return Obx(() => Scaffold(
       backgroundColor: kBackgroundColor,
       appBar: AppBar(
-        backgroundColor : kBackgroundColor,
-        centerTitle: true,
-        title: const Text(
-          "Favorites",
-          style: TextStyle(
-            color: Colors.black,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
+        title: Align(alignment:Alignment.center,child: Text('Favorites')),
       ),
+      // appBar: AppBar(
+      //   backgroundColor : kBackgroundColor,
+      //   centerTitle: true,
+      //   title: const Text(
+      //     "Favorites",
+      //     style: TextStyle(
+      //       color: Colors.black,
+      //       fontWeight: FontWeight.bold,
+      //     ),
+      //   ),
+      // ),
 
       body: favoriteItems.isEmpty
           ? const Center(

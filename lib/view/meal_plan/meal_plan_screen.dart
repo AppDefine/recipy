@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:recipy/utils/constants.dart';
 
 class MealPlanScreen extends StatefulWidget {
   const MealPlanScreen({Key? key}) : super(key: key);
@@ -39,8 +40,9 @@ class _MealPlanScreenState extends State<MealPlanScreen> {
 
 
     return Scaffold(
+      backgroundColor: kBackgroundColor,
       appBar: AppBar(
-        title: const Text('Meal Plans'),
+        title: Align(alignment:Alignment.center,child: const Text('Meal Plans'),),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
