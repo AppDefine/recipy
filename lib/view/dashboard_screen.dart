@@ -4,6 +4,7 @@ import 'package:iconsax/iconsax.dart';
 import 'package:recipy/utils/constants.dart';
 import 'package:recipy/view/favourite_screen.dart';
 import 'package:recipy/view/home_screen.dart';
+import 'package:recipy/view/meal_plan/meal_plan_screen.dart';
 
 class DashboardScreen extends StatefulWidget {
   const DashboardScreen({super.key});
@@ -238,8 +239,9 @@ class _DashboardScreenState extends State<DashboardScreen> {
     page = [
       HomeScreen(),
       FavouriteScreen(),
+      MealPlanScreen(),
       // navBarPage(Iconsax.heart5),
-      navBarPage(Iconsax.calendar5),
+      // navBarPage(Iconsax.calendar5),
       navBarPage(Iconsax.setting_21),
     ];
     super.initState();
