@@ -8,7 +8,6 @@ const kBannerColor = Color(0xff579f8c);
 class Constants {
   static const appName = "Recipy";
 
-   // List<String> _favoriteIds = [];
-   //
-   // List<String> get favoriteIds => _favoriteIds;
+  static const stripePublishableKey = "pk_test_51BTUDGJAJfZb9HEBwDg86TN1KNprHjkfipXmEDMb0gSCassK5T3ZfxsAbcgKVmAIXF7oZ6ItlZZbXO6idTHE67IM007EwQ4uN3";
+  static const stripeSecretKey = "sk_test_tR3PYbcVNZZ796tH88S4VQ2u";
 }

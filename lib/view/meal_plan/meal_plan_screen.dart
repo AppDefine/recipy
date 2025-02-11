@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:recipy/utils/constants.dart';
+import 'package:recipy/view/meal_plan/stripe_service.dart';
 
 class MealPlanScreen extends StatefulWidget {
   const MealPlanScreen({Key? key}) : super(key: key);
@@ -116,13 +117,7 @@ class _MealPlanScreenState extends State<MealPlanScreen> {
                                   ElevatedButton(
                                     onPressed: () {
                                       // Handle buy action
-                                      ScaffoldMessenger.of(context).showSnackBar(
-                                        SnackBar(
-                                          content: Text(
-                                            'Purchased: ${mealPlan['title']}',
-                                          ),
-                                        ),
-                                      );
+                                      StripeService.instance.makePayment();
                                     },
                                     style: ElevatedButton.styleFrom(
                                       shape: RoundedRectangleBorder(
