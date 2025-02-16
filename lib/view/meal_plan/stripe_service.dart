@@ -9,9 +9,9 @@ class StripeService {
 
   static final StripeService instance = StripeService._();
 
-  Future<void> makePayment() async {
+  Future<void> makePayment(double amount, String currency) async {
     try {
-      String? paymentIntentClientSecret = await _createPaymentIntent(10, "usd");
+      String? paymentIntentClientSecret = await _createPaymentIntent(amount, currency);
       if (paymentIntentClientSecret == null) return;
       await Stripe.instance.initPaymentSheet(
           paymentSheetParameters: SetupPaymentSheetParameters(
@@ -31,7 +31,7 @@ class StripeService {
     }
   }
 
-  Future<String?> _createPaymentIntent(int amount, String currency) async {
+  Future<String?> _createPaymentIntent(double amount, String currency) async {
     final url = Uri.parse('https://api.stripe.com/v1/payment_intents');
 
     final headers = {
@@ -43,9 +43,6 @@ class StripeService {
       'amount': calculateAmountInCents(amount),
       'currency': currency,
       'description': 'Purchase of Product X (Export)',
-      // 'name': 'test name',
-      // 'address': 'test address',
-      // 'automatic_payment_methods[enabled]': 'true',
       'shipping[name]': 'Test Name',
       'shipping[address][line1]': '123 Test Street',
       'shipping[address][city]': 'Test City',
@@ -70,7 +67,7 @@ class StripeService {
     }
   }
 
-  String calculateAmountInCents(int amount) {
+  String calculateAmountInCents(double amount) {
     int amountInCents = (amount * 100).toInt();
     return amountInCents.toString();
   }
