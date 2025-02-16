@@ -34,6 +34,7 @@ class _FavouriteScreenState extends State<FavouriteScreen> {
     return Obx(() => Scaffold(
       backgroundColor: kBackgroundColor,
       appBar: AppBar(
+        backgroundColor: kPrimaryColor,
         title: Align(alignment:Alignment.center,child: Text('Favorites')),
       ),
       // appBar: AppBar(

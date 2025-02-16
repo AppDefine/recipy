@@ -1,6 +1,8 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:recipy/utils/constants.dart';
 import 'package:recipy/utils/root_bindings.dart';
@@ -32,6 +34,9 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: false,
       ),
+      // themeMode: Get.isDarkMode ? ThemeMode.dark : ThemeMode.light,
+      // darkTheme: ThemeData.dark(),
+      // theme: ThemeData.light(),
       home: const DashboardScreen(),
     );
   }

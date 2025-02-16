@@ -242,9 +242,6 @@ class _DashboardScreenState extends State<DashboardScreen> {
       FavouriteScreen(),
       MealPlanScreen(),
       SettingScreen(),
-      // navBarPage(Iconsax.heart5),
-      // navBarPage(Iconsax.calendar5),
-      // navBarPage(Iconsax.setting_21),
     ];
     super.initState();
   }
@@ -260,7 +257,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
             currentIndex: selectedIndex,
             selectedItemColor: kPrimaryColor,
             unselectedItemColor: Colors.grey,
-            type: BottomNavigationBarType.shifting,
+            type: BottomNavigationBarType.fixed,
             selectedLabelStyle: TextStyle(
               color: kPrimaryColor,
               fontWeight: FontWeight.w600
@@ -275,21 +272,13 @@ class _DashboardScreenState extends State<DashboardScreen> {
             });
             },
             items: [
-              BottomNavigationBarItem(icon: Icon(selectedIndex == 0 ? Iconsax.home5 : Iconsax.home_1),label: "Home"),
-              BottomNavigationBarItem(icon: Icon(selectedIndex == 1 ? Iconsax.heart5 : Iconsax.heart),label: "Favourite"),
-              BottomNavigationBarItem(icon: Icon(selectedIndex == 2 ? Iconsax.calendar5 : Iconsax.calendar),label: "Meal Plan"),
-              BottomNavigationBarItem(icon: Icon(selectedIndex == 3 ? Iconsax.setting_21 : Iconsax.setting_2),label: "Setting"),
+              BottomNavigationBarItem(icon: Icon(selectedIndex == 0 ? Icons.home : Icons.home_outlined),label: "Home"),
+              BottomNavigationBarItem(icon: Icon(selectedIndex == 1 ? Icons.favorite_rounded : Icons.favorite_outline_rounded),label: "Favourite"),
+              BottomNavigationBarItem(icon: Icon(selectedIndex == 2 ? Icons.calendar_today : Icons.calendar_today_outlined),label: "Meal Plan"),
+              BottomNavigationBarItem(icon: Icon(selectedIndex == 3 ? Icons.settings : Icons.settings_outlined),label: "Setting"),
             ]
         ),
       body: page[selectedIndex],
-    );
-  }
-
-  navBarPage(iconName){
-    return Center(
-      child: Icon(iconName,
-      size: 100,
-      color: kPrimaryColor,),
     );
   }
 }

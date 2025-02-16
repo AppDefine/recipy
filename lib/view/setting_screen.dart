@@ -11,10 +11,15 @@ class SettingScreen extends StatefulWidget {
 }
 
 class _SettingScreenState extends State<SettingScreen> {
+
+  // Flag to track the theme (light or dark)
+  var _isDarkMode = Get.isDarkMode.obs;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: kPrimaryColor,
         title: const Text("Profile"),
         centerTitle: true,
       ),
@@ -64,7 +69,11 @@ class _SettingScreenState extends State<SettingScreen> {
               _buildCardTile(
                 icon: Icons.nightlight,
                 title: "Dark Mode",
-                onTap: () {},
+                onTap: () {
+                  // // Toggle the dark mode on and off
+                  // _isDarkMode.value = !_isDarkMode.value;
+                  // Get.changeTheme(_isDarkMode.value ? ThemeData.dark() : ThemeData.light());
+                },
               ),
               const SizedBox(height: 10),
               _buildCardTile(

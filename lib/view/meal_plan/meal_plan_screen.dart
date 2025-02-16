@@ -72,6 +72,7 @@ class _MealPlanScreenState extends State<MealPlanScreen> {
     return Scaffold(
       backgroundColor: kBackgroundColor,
       appBar: AppBar(
+        backgroundColor: kPrimaryColor,
         title: Align(alignment:Alignment.center,child: const Text('Meal Plans'),),
       ),
       body: Padding(
