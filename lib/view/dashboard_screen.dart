@@ -274,7 +274,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
             items: [
               BottomNavigationBarItem(icon: Icon(selectedIndex == 0 ? Icons.home : Icons.home_outlined),label: "Home"),
               BottomNavigationBarItem(icon: Icon(selectedIndex == 1 ? Icons.favorite_rounded : Icons.favorite_outline_rounded),label: "Favourite"),
-              BottomNavigationBarItem(icon: Icon(selectedIndex == 2 ? Icons.calendar_today : Icons.calendar_today_outlined),label: "Meal Plan"),
+              BottomNavigationBarItem(icon: Icon(selectedIndex == 2 ? Icons.calendar_month : Icons.calendar_month_outlined),label: "Meal Plan"),
               BottomNavigationBarItem(icon: Icon(selectedIndex == 3 ? Icons.settings : Icons.settings_outlined),label: "Setting"),
             ]
         ),
