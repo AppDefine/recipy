@@ -37,18 +37,6 @@ class _FavouriteScreenState extends State<FavouriteScreen> {
         backgroundColor: kPrimaryColor,
         title: Align(alignment:Alignment.center,child: Text('Favorites')),
       ),
-      // appBar: AppBar(
-      //   backgroundColor : kBackgroundColor,
-      //   centerTitle: true,
-      //   title: const Text(
-      //     "Favorites",
-      //     style: TextStyle(
-      //       color: Colors.black,
-      //       fontWeight: FontWeight.bold,
-      //     ),
-      //   ),
-      // ),
-
       body: favoriteItems.isEmpty
           ? const Center(
         child: Text(
@@ -64,7 +52,7 @@ class _FavouriteScreenState extends State<FavouriteScreen> {
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return const Center(
-              child: CircularProgressIndicator(), // One loader for all
+              child: CircularProgressIndicator(color: kPrimaryColor,), // One loader for all
             );
           }
           if (!snapshot.hasData || snapshot.data!.isEmpty) {
