@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:recipy/auth_service.dart';
 import 'package:recipy/utils/constants.dart';
+import 'package:recipy/view/auth/login_screen.dart';
 import 'package:recipy/view/edit_profile_screen.dart';
 
 class SettingScreen extends StatefulWidget {
@@ -12,8 +14,7 @@ class SettingScreen extends StatefulWidget {
 
 class _SettingScreenState extends State<SettingScreen> {
 
-  // Flag to track the theme (light or dark)
-  var _isDarkMode = Get.isDarkMode.obs;
+  final _auth = AuthService();
 
   @override
   Widget build(BuildContext context) {
@@ -92,7 +93,9 @@ class _SettingScreenState extends State<SettingScreen> {
                 width: Get.width,
                 height: Get.width / 8,
                 child: ElevatedButton.icon(
-                  onPressed: () {},
+                  onPressed: () {
+                    _auth.signOut().then((value) => Get.offAll(()=>LoginScreen()),);
+                  },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: kPrimaryColor,
                     shape: RoundedRectangleBorder(

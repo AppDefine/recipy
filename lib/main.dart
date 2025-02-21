@@ -7,6 +7,7 @@ import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:recipy/utils/constants.dart';
 import 'package:recipy/utils/root_bindings.dart';
 import 'package:recipy/view/dashboard_screen.dart';
+import 'package:recipy/view/auth/login_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -34,10 +35,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: false,
       ),
-      // themeMode: Get.isDarkMode ? ThemeMode.dark : ThemeMode.light,
-      // darkTheme: ThemeData.dark(),
-      // theme: ThemeData.light(),
-      home: const DashboardScreen(),
+      home: const LoginScreen(),
     );
   }
 }
