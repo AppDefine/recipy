@@ -94,6 +94,8 @@ class _SettingScreenState extends State<SettingScreen> {
                 height: Get.width / 8,
                 child: ElevatedButton.icon(
                   onPressed: () {
+                    final pref = Constants.securePreferences();
+                    pref.deleteAll();
                     _auth.signOut().then((value) => Get.offAll(()=>LoginScreen()),);
                   },
                   style: ElevatedButton.styleFrom(
