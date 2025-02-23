@@ -12,11 +12,29 @@ class MealPlanScreen extends StatefulWidget {
 
 class _MealPlanScreenState extends State<MealPlanScreen> {
 
+  final _mealPlan = StripeService.instance;
+  List<String> listOfDocIdMealPlan = [];
+
   @override
   void initState() {
     // addMultipleRecipes();
+    getDocIdMealPlan();
     super.initState();
   }
+
+  getDocIdMealPlan() async {
+    final pref = Constants.securePreferences();
+    var uid = await pref.read(key: Constants.uid);
+    if (uid != null) {
+      listOfDocIdMealPlan = await _mealPlan.getDocIdMealPlan(uid);
+      setState(() {});
+      print("--------------- ${listOfDocIdMealPlan}");
+    } else {
+      print('UID is null');
+      listOfDocIdMealPlan = [];
+    }
+  }
+
   //
   // Future<void> addMultipleRecipes() async {
   //   CollectionReference recipes = FirebaseFirestore.instance.collection('meal-plan');
@@ -160,25 +178,42 @@ class _MealPlanScreenState extends State<MealPlanScreen> {
                                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                     children: [
                                       ElevatedButton(
-                                        onPressed: () {
-                                          // Handle buy action
+                                        onPressed: () async {
                                           String currency = "usd";
-                                          StripeService.instance.makePayment(
+                                          bool paymentSuccess = await StripeService.instance.makePayment(
                                             double.parse(mealPlan['price']),
                                             currency,
                                           );
+
+                                          if (paymentSuccess) {
+                                            CollectionReference users = FirebaseFirestore.instance.collection('users');
+                                            final pref = Constants.securePreferences();
+                                            var uid = await pref.read(key: Constants.uid);
+
+                                            await users.doc(uid).update({
+                                              'docIDMealPlan': FieldValue.arrayUnion([mealPlan['docId'],]),
+                                            });
+                                          } else {
+
+                                          }
                                         },
                                         style: ElevatedButton.styleFrom(
                                           shape: RoundedRectangleBorder(
                                             borderRadius: BorderRadius.circular(8.0),
                                           ),
                                         ),
-                                        child: Row(
-                                          children: const [
-                                            Icon(Icons.shopping_cart, size: 16.0),
-                                            SizedBox(width: 6.0),
-                                            Text('Buy Now'),
-                                          ],
+                                        child: Container(
+                                          child: Row(
+                                            children: listOfDocIdMealPlan!.contains(mealPlan['docId'])?const [
+                                              Icon(Icons.coffee_outlined, size: 16.0),
+                                              SizedBox(width: 6.0),
+                                              Text('Explore'),
+                                            ]:const [
+                                              Icon(Icons.shopping_cart, size: 16.0),
+                                              SizedBox(width: 6.0),
+                                              Text('Buy Now'),
+                                            ],
+                                          ),
                                         ),
                                       ),
                                       Text(

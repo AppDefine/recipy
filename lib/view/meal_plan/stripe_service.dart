@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:http/http.dart' as http;
 import 'package:recipy/utils/constants.dart';
@@ -9,25 +10,19 @@ class StripeService {
 
   static final StripeService instance = StripeService._();
 
-  Future<void> makePayment(double amount, String currency) async {
+  Future<bool> makePayment(double amount, String currency) async {
     try {
       String? paymentIntentClientSecret = await _createPaymentIntent(amount, currency);
-      if (paymentIntentClientSecret == null) return;
+      if (paymentIntentClientSecret == null) return false;
       await Stripe.instance.initPaymentSheet(
           paymentSheetParameters: SetupPaymentSheetParameters(
               paymentIntentClientSecret: paymentIntentClientSecret,
           merchantDisplayName: "Test Merchant"));
-      await _processPayment();
+      await Stripe.instance.presentPaymentSheet();
+      return true;
     } catch (e) {
       print(e);
-    }
-  }
-
-  Future<void> _processPayment() async{
-    try{
-      await Stripe.instance.presentPaymentSheet();
-    }catch(e){
-      print(e);
+      return false;
     }
   }
 
@@ -61,9 +56,11 @@ class StripeService {
       } else {
         print('Failed to create Payment Intent: ${response.statusCode}');
         print(response.body);
+        return null;
       }
     } catch (e) {
       print('Error: $e');
+      return null;
     }
   }
 
@@ -71,4 +68,28 @@ class StripeService {
     int amountInCents = (amount * 100).toInt();
     return amountInCents.toString();
   }
+
+  Future<List<String>> getDocIdMealPlan(String uid) async {
+    // Reference to the 'users' collection
+    CollectionReference users = FirebaseFirestore.instance.collection('users');
+
+    try {
+      // Get the document with the specified UID
+      DocumentSnapshot userDoc = await users.doc(uid).get();
+
+      if (userDoc.exists) {
+        print("============= ${uid}");
+        // Access the 'docIdMealPlan' field
+        print("============= ${userDoc.get('docIDMealPlan')}");
+        return List<String>.from(userDoc.get('docIDMealPlan'));
+      } else {
+        return [""];
+        print('User document does not exist');
+      }
+    } catch (e) {
+      return [""];
+      print('Error fetching docIdMealPlan: $e');
+    }
+  }
+
 }
