@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
-import 'package:recipy/controller/controller/ItemController.dart';
+import 'package:recipy/controller/controller/item_controller.dart';
 import 'package:recipy/utils/constants.dart';
 import 'package:recipy/view/recipe_detail_screen.dart';
 

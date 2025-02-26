@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:recipy/controller/MealPlanController.dart';
+import 'package:recipy/controller/meal_plan_controller.dart';
 import 'package:recipy/utils/constants.dart';
 
 class MealPlanScreen extends StatefulWidget {

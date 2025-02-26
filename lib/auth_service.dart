@@ -5,7 +5,7 @@ import 'package:get/get_core/src/get_main.dart';
 import 'dart:developer';
 
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:recipy/controller/LoginController.dart';
+import 'package:recipy/controller/login_controller.dart';
 
 class AuthService {
   final _auth = FirebaseAuth.instance;
