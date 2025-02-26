@@ -1,0 +1,59 @@
+
+
+    Meal Plan Screen
+
+     @override
+      void initState() {
+        // addMultipleRecipes();
+        getDocIdMealPlan();
+        super.initState();
+      }
+
+  // Future<void> addMultipleRecipes() async {
+  //   CollectionReference recipes = FirebaseFirestore.instance.collection('meal-plan');
+  //
+  //   for (var mealPlanData in mealPlans) {
+  //     await recipes.add(mealPlanData).then((value) {
+  //       print("object ${value.id}");
+  //       recipes.doc(value.id).set({
+  //
+  //           'docId' : value.id,
+  //           'title': mealPlanData['title'],
+  //           'description': mealPlanData['description'],
+  //           'price': mealPlanData['price'],
+  //           'image': mealPlanData['image'],
+  //           'duration': mealPlanData['duration'],
+  //           'meals': mealPlanData['meals'],
+  //
+  //       });
+  //     },);
+  //   }
+  //   print("All 10 meal plan data added successfully!");
+  // }
+  //
+  // final List<Map<String, dynamic>> mealPlans = [
+  //   {
+  //     'title': 'Diet Meal Plan',
+  //     'description': 'Stay healthy with balanced, nutrient-rich meals designed for your daily needs.',
+  //     'price': '19.99',
+  //     'image': 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_pdDITl-_on_oQizgPc2_R_CwL0NhQ6eccQ&s',
+  //     'duration': '4 Weeks',
+  //     'meals': '28 Meals',
+  //   },
+  //   {
+  //     'title': 'Weight Loss Meal Plan',
+  //     'description': 'Enjoy tasty, low-calorie meals tailored to help you lose weight effectively.',
+  //     'price': '29.99',
+  //     'image': 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQtsAUjyO0xORfUnvJ9X6sWuJRpN7QFADrpew&s',
+  //     'duration': '6 Weeks',
+  //     'meals': '42 Meals',
+  //   },
+  //   {
+  //     'title': 'Weight Gain Meal Plan',
+  //     'description': 'Fuel your body with high-protein meals that promote muscle growth and strength.',
+  //     'price': '24.99',
+  //     'image': 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTNyLAdFsIziWURqD2CY0_yqoo62Ew5TS2HVA&s',
+  //     'duration': '8 Weeks',
+  //     'meals': '56 Meals',
+  //   },
+  // ];
