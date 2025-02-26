@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:recipy/controller/meal_plan_controller.dart';
 import 'package:recipy/utils/constants.dart';
+import 'package:recipy/view/meal_plan/meal_plan_explore_screen.dart';
 
 class MealPlanScreen extends StatefulWidget {
   const MealPlanScreen({Key? key}) : super(key: key);
@@ -142,8 +143,12 @@ class _MealPlanScreenState extends State<MealPlanScreen> {
                                             listOfDocIdMealPlan
                                                     .contains(mealPlan['docId'])
                                                 ? FilledButton.icon(
-                                                    onPressed: () async {},
-                                                    icon: const Icon(
+                                              onPressed: () {
+                                                Get.offAll(() => MealPlanExploreScreen(
+                                                  mealPlanType: mealPlan['title'], // Pass the meal plan title dynamically
+                                                ));
+                                              },
+                                              icon: const Icon(
                                                         Icons.coffee_outlined,
                                                         size: 16.0),
                                                     label:
@@ -162,7 +167,6 @@ class _MealPlanScreenState extends State<MealPlanScreen> {
                                                   )
                                                 : FilledButton.icon(
                                                     onPressed: () async {
-                                                      // controller.showLoading();
                                                       String currency = "usd";
                                                       bool paymentSuccess =
                                                           await controller
