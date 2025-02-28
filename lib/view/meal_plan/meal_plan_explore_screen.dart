@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:recipy/utils/constants.dart';
 
 class MealPlanExploreScreen extends StatelessWidget {
   final String mealPlanType;
@@ -452,10 +453,11 @@ class MealPlanExploreScreen extends StatelessWidget {
     final mealPlan = mealPlanDetails[mealPlanType];
 
     return Scaffold(
+      backgroundColor: kBackgroundColor,
       appBar: AppBar(
+        backgroundColor: kPrimaryColor,
+        centerTitle: true,
         title: Text(mealPlanType),
-        backgroundColor: Colors.teal,
-        elevation: 0,
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -473,16 +475,19 @@ class MealPlanExploreScreen extends StatelessWidget {
   }
 
   Widget _buildHeaderImage(String imageUrl) {
-    return Container(
-      width: double.infinity,
-      height: 200,
-      decoration: BoxDecoration(
-        image: DecorationImage(
-          image: NetworkImage(imageUrl),
-          fit: BoxFit.cover,
-          onError: (exception, stackTrace) => const Icon(Icons.error),
+    return Padding(
+      padding: const EdgeInsets.all(15),
+      child: Container(
+        width: double.infinity,
+        height: 200,
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: NetworkImage(imageUrl),
+            fit: BoxFit.cover,
+            onError: (exception, stackTrace) => const Icon(Icons.error),
+          ),
+          borderRadius: const BorderRadius.all(Radius.circular(20)),
         ),
-        borderRadius: const BorderRadius.vertical(bottom: Radius.circular(20)),
       ),
     );
   }

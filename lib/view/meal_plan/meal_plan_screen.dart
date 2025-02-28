@@ -144,7 +144,7 @@ class _MealPlanScreenState extends State<MealPlanScreen> {
                                                     .contains(mealPlan['docId'])
                                                 ? FilledButton.icon(
                                               onPressed: () {
-                                                Get.offAll(() => MealPlanExploreScreen(
+                                                Get.to(() => MealPlanExploreScreen(
                                                   mealPlanType: mealPlan['title'], // Pass the meal plan title dynamically
                                                 ));
                                               },
