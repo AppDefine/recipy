@@ -468,6 +468,7 @@ class MealPlanExploreScreen extends StatelessWidget {
             _buildDescription(mealPlan["description"]),
             const SizedBox(height: 24),
             _buildMealsSection(context, mealPlan["meals"]),
+            const SizedBox(height: 15),
           ],
         ),
       ),
@@ -535,7 +536,7 @@ class MealPlanExploreScreen extends StatelessWidget {
     return Card(
       margin: const EdgeInsets.symmetric(horizontal: 16.0),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-      elevation: 4,
+      elevation: 1,
       child: ClipRRect(
         borderRadius: BorderRadius.circular(12),
         child: ExpansionTile(
