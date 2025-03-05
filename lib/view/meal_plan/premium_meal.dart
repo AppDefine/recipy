@@ -48,14 +48,14 @@ class _PremiumMealScreenState extends State<PremiumMealScreen> {
       padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 14.0),
       decoration: BoxDecoration(
         gradient: LinearGradient(
-          colors: [kBannerColor.withOpacity(0.9), kBannerColor],
+          colors: [kBannerColor.withValues(alpha: 0.9), kBannerColor],
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
         ),
         borderRadius: BorderRadius.circular(10.0),
         boxShadow: [
           BoxShadow(
-            color: kBannerColor.withOpacity(0.4),
+            color: kBannerColor.withValues(alpha: 0.4),
             spreadRadius: 2,
             blurRadius: 8,
             offset: const Offset(0, 4),
@@ -130,6 +130,63 @@ class _PremiumMealScreenState extends State<PremiumMealScreen> {
       child: Container(
         padding: const EdgeInsets.all(16.0),
         decoration: BoxDecoration(
+          color: kBackgroundColor,
+          borderRadius: BorderRadius.circular(16),
+        ),
+        child: Column(
+          children: steps.asMap().entries.map((entry) {
+            return Padding(
+              padding: const EdgeInsets.symmetric(vertical: 8.0),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Container(
+                    width: 25,
+                    height: 25,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: kPrimaryColor.withOpacity(0.1),
+                    ),
+                    child: Center(
+                      child: Text(
+                        "${entry.key + 1}",
+                        style: const TextStyle(
+                          fontSize: 14,
+                          fontWeight: FontWeight.bold,
+                          color: kPrimaryColor,
+                        ),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(width: 12),
+                  Expanded(
+                    child: Text(
+                      entry.value,
+                      style: const TextStyle(
+                        fontSize: 16,
+                        color: Colors.black,
+                        height: 1.4,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            );
+          }).toList(),
+        ),
+      ),
+    );
+  }
+
+
+
+/*Widget _buildStepsList(List<String> steps) {
+    return Card(
+      elevation: 4,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+      child: Container(
+        padding: const EdgeInsets.all(16.0),
+        decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(16),
           color: kBackgroundColor,
         ),
@@ -144,7 +201,7 @@ class _PremiumMealScreenState extends State<PremiumMealScreen> {
                   Container(
                     width: 25, // Adjusted size
                     height: 25,
-                    margin: const EdgeInsets.only(right: 12.0),
+                    margin: const EdgeInsets.only(right: 12.0,top: 4),
                     decoration: BoxDecoration(
                       color: kPrimaryColor,
                       shape: BoxShape.circle,
@@ -177,5 +234,5 @@ class _PremiumMealScreenState extends State<PremiumMealScreen> {
         ),
       ),
     );
-  }
+  }*/
 }
