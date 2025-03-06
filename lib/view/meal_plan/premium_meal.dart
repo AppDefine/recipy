@@ -44,23 +44,15 @@ class _PremiumMealScreenState extends State<PremiumMealScreen> {
 
   Widget _buildSectionTitle(String title) {
     return Container(
-      margin: const EdgeInsets.only(top: 12.0),
+      margin: const EdgeInsets.only(top: 12.0,left: 3),
       padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 14.0),
       decoration: BoxDecoration(
         gradient: LinearGradient(
-          colors: [kBannerColor.withValues(alpha: 0.9), kBannerColor],
+          colors: [kBannerColor.withValues(alpha: 0.9), Colors.green.withValues(alpha: 0.9)],
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
         ),
         borderRadius: BorderRadius.circular(10.0),
-        boxShadow: [
-          BoxShadow(
-            color: kBannerColor.withValues(alpha: 0.4),
-            spreadRadius: 2,
-            blurRadius: 8,
-            offset: const Offset(0, 4),
-          ),
-        ],
       ),
       child: Text(
         title,
@@ -83,6 +75,14 @@ class _PremiumMealScreenState extends State<PremiumMealScreen> {
         decoration: BoxDecoration(
           color: kBackgroundColor,
           borderRadius: BorderRadius.circular(16),
+          boxShadow: [
+            BoxShadow(
+              color: kBannerColor.withOpacity(0.2),
+              spreadRadius: 2,
+              blurRadius: 2,
+              offset: const Offset(0, -2), // Top shadow
+            ),
+          ]
         ),
         child: Column(
           children: ingredients.map((ingredient) {
@@ -132,6 +132,14 @@ class _PremiumMealScreenState extends State<PremiumMealScreen> {
         decoration: BoxDecoration(
           color: kBackgroundColor,
           borderRadius: BorderRadius.circular(16),
+            boxShadow: [
+              BoxShadow(
+                color: kBannerColor.withOpacity(0.2),
+                spreadRadius: 2,
+                blurRadius: 2,
+                offset: const Offset(0, -2), // Top shadow
+              ),
+            ]
         ),
         child: Column(
           children: steps.asMap().entries.map((entry) {
