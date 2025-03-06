@@ -6,6 +6,7 @@ import 'package:recipy/auth_service.dart';
 import 'package:recipy/controller/login_controller.dart';
 import 'package:recipy/utils/constants.dart';
 import 'package:recipy/view/dashboard_screen.dart';
+import 'package:recipy/widget/privacy_policy.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -132,7 +133,9 @@ class _LoginScreenState extends State<LoginScreen> {
                         style: TextStyle(fontSize: 14, color: Colors.black54),
                       ),
                       GestureDetector(
-                        onTap: () => print('Open privacy policy'),
+                        onTap: () {
+                          Get.off(()=>PrivacyPolicy());
+                        },
                         child: Text(
                           'Privacy Policy, Terms of Use, and Code of Conduct.',
                           textAlign: TextAlign.center,
