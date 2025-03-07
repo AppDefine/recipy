@@ -10,7 +10,7 @@ class _PrivacyPolicyState extends State<PrivacyPolicy> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Privacy Policy & Terms of Use'),
+        title: Text('Privacy Policy'),
       ),
       body: SingleChildScrollView(
         padding: EdgeInsets.all(16.0),
@@ -18,72 +18,59 @@ class _PrivacyPolicyState extends State<PrivacyPolicy> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              'Privacy Policy & Terms of Use',
+              'Privacy Policy',
               style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
             ),
             SizedBox(height: 8),
             Text(
-              'Effective Date: [Insert Date]',
-              style: TextStyle(fontSize: 16, fontStyle: FontStyle.italic),
+              'Please read this privacy policy before accessing or using Recipy!',
+              style: TextStyle(fontSize: 16, fontStyle: FontStyle.normal),
             ),
             SizedBox(height: 16),
-            Text(
-              'Recipy ("we," "our," or "us") is committed to protecting your privacy. When you use our recipe app ("the App"), we collect certain information, such as your name, email address, and password when you sign up or create an account. We also gather data about how you use the App, such as the recipes you view and the categories you browse, as well as information about the device you use to access the App.',
-              style: TextStyle(fontSize: 16),
-            ),
+            buildSectionTitle('I. Introduction'),
+            buildSectionContent(
+                'Recipy is a mobile application designed to provide users with a comprehensive collection of recipes, meal planning tools, and the ability to save favorites. The app offers recipes for breakfast, lunch, and dinner to inspire users to create delicious meals.'),
+            buildSectionTitle('II. What Data We Collect'),
+            buildSectionContent(
+                'We collect personal information such as your name, email address, and preferences to enhance your experience. Registration is required for features like saving favorites, creating meal plans, and accessing personalized recommendations. Non-personal data, such as device information and app usage statistics, is also collected to improve functionality.'),
+            buildSectionTitle('III. How We Use Information'),
+            buildSectionContent(
+                'The information collected is used to enhance app features, provide personalized recipe suggestions, and ensure security. Data helps us operate, improve, and customize Recipy while maintaining a secure environment for users.'),
+            buildSectionTitle('IV. Information Security and Storage'),
+            buildSectionContent(
+                'We implement secure data handling practices and retain personal information only as long as necessary. Users can request the deletion of their data by contacting our support team at support@recipyapp.com.'),
+            buildSectionTitle('V. Changes to This Policy'),
+            buildSectionContent(
+                'This policy may be updated periodically. Significant changes will be communicated via email or through prominent notices within Recipy.'),
+            buildSectionTitle('VI. Application of This Policy'),
+            buildSectionContent(
+                'This policy applies to the Recipy mobile application and related services. It does not cover third-party services or external links accessed through the app.'),
             SizedBox(height: 16),
-            Text(
-              'We use this information to improve the App’s functionality, personalize your experience by suggesting recipes, and send you updates or promotional materials if you opt in.',
-              style: TextStyle(fontSize: 16),
-            ),
-            SizedBox(height: 16),
-            Text(
-              'We do not sell your information but may share it with service providers or legal authorities when required by law.',
-              style: TextStyle(fontSize: 16),
-            ),
-            SizedBox(height: 16),
-            Text(
-              'You have the option to update or delete your account information through the App settings and can opt out of promotional emails by clicking "unsubscribe" in the email.',
-              style: TextStyle(fontSize: 16),
-            ),
-            SizedBox(height: 16),
-            Text(
-              'We use industry-standard practices to protect your information, but complete security cannot be guaranteed. We may update this policy occasionally and will notify you of significant changes.',
-              style: TextStyle(fontSize: 16),
-            ),
             Divider(height: 32),
             Text(
-              'By using Recipy ("the App"), you agree to the following:',
-              style: TextStyle(fontSize: 16),
-            ),
-            SizedBox(height: 16),
-            Text(
-              'The App is intended for personal, non-commercial use, and you must be at least 13 years old to use it.',
-              style: TextStyle(fontSize: 16),
-            ),
-            SizedBox(height: 16),
-            Text(
-              'You agree not to use the App for illegal activities, share offensive content, or interfere with its systems. The content within the App, such as recipes, images, and text, is owned by Recipy or its licensors and may not be used or distributed without permission.',
-              style: TextStyle(fontSize: 16),
-            ),
-            SizedBox(height: 16),
-            Text(
-              'The App is provided "as is," without warranties of any kind. We do not guarantee the accuracy or reliability of the content.',
-              style: TextStyle(fontSize: 16),
-            ),
-            SizedBox(height: 16),
-            Text(
-              'We are not liable for any damages or losses arising from your use of the App. Updates to these terms will be posted, and continued use of the App indicates your acceptance of the updated terms.',
-              style: TextStyle(fontSize: 16),
-            ),
-            Divider(height: 32),
-            Text(
-              'If you have questions about our policies, contact us at [Insert Contact Email].',
+              'If you have any questions or concerns, contact us at support@recipyapp.com.',
               style: TextStyle(fontSize: 16),
             ),
           ],
         ),
       ),
+    );
+  }
+
+  Widget buildSectionTitle(String title) {
+    return Padding(
+      padding: const EdgeInsets.only(top: 16.0, bottom: 8.0),
+      child: Text(
+        title,
+        style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+      ),
+    );
+  }
+
+  Widget buildSectionContent(String content) {
+    return Text(
+      content,
+      style: TextStyle(fontSize: 16),
     );
   }
 }
