@@ -27,11 +27,11 @@ class _PremiumMealScreenState extends State<PremiumMealScreen> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               _buildSectionTitle("Ingredients"),
-              const SizedBox(height: 8),
+              const SizedBox(height: 12),
               _buildIngredientsList(widget.meal["ingredients"]),
-              const SizedBox(height: 16),
+              const SizedBox(height: 20),
               _buildSectionTitle("Steps"),
-              const SizedBox(height: 8),
+              const SizedBox(height: 12),
               _buildStepsList(widget.meal["steps"]),
             ],
           ),
@@ -68,16 +68,16 @@ class _PremiumMealScreenState extends State<PremiumMealScreen> {
 
   Widget _buildIngredientsList(List<String> ingredients) {
     return Card(
-      elevation: 4,
+      elevation: 2,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
       child: Container(
         padding: const EdgeInsets.all(16.0),
         decoration: BoxDecoration(
-          color: kBackgroundColor,
+          color: Colors.white,
           borderRadius: BorderRadius.circular(16),
           boxShadow: [
             BoxShadow(
-              color: kBannerColor.withOpacity(0.2),
+              color: kBannerColor.withValues(alpha: 0.1),
               spreadRadius: 2,
               blurRadius: 2,
               offset: const Offset(0, -2), // Top shadow
@@ -125,16 +125,16 @@ class _PremiumMealScreenState extends State<PremiumMealScreen> {
 
   Widget _buildStepsList(List<String> steps) {
     return Card(
-      elevation: 4,
+      elevation: 2,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
       child: Container(
         padding: const EdgeInsets.all(16.0),
         decoration: BoxDecoration(
-          color: kBackgroundColor,
+          color: Colors.white,
           borderRadius: BorderRadius.circular(16),
             boxShadow: [
               BoxShadow(
-                color: kBannerColor.withOpacity(0.2),
+                color: kBannerColor.withValues(alpha: 0.1),
                 spreadRadius: 2,
                 blurRadius: 2,
                 offset: const Offset(0, -2), // Top shadow
@@ -153,7 +153,7 @@ class _PremiumMealScreenState extends State<PremiumMealScreen> {
                     height: 25,
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
-                      color: kPrimaryColor.withOpacity(0.1),
+                      color: kPrimaryColor.withValues(alpha: 0.1),
                     ),
                     child: Center(
                       child: Text(
@@ -185,62 +185,4 @@ class _PremiumMealScreenState extends State<PremiumMealScreen> {
       ),
     );
   }
-
-
-
-/*Widget _buildStepsList(List<String> steps) {
-    return Card(
-      elevation: 4,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-      child: Container(
-        padding: const EdgeInsets.all(16.0),
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(16),
-          color: kBackgroundColor,
-        ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: steps.asMap().entries.map((entry) {
-            return Container(
-              margin: const EdgeInsets.symmetric(vertical: 12.0),
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.start, // Align to top
-                children: [
-                  Container(
-                    width: 25, // Adjusted size
-                    height: 25,
-                    margin: const EdgeInsets.only(right: 12.0,top: 4),
-                    decoration: BoxDecoration(
-                      color: kPrimaryColor,
-                      shape: BoxShape.circle,
-                    ),
-                    child: Center(
-                      child: Text(
-                        "${entry.key + 1}",
-                        style: const TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 14, // Adjust size if needed
-                        ),
-                      ),
-                    ),
-                  ),
-                  Expanded(
-                    child: Text(
-                      entry.value,
-                      style: const TextStyle(
-                        fontSize: 16,
-                        color: Colors.black87,
-                        height: 1.6,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            );
-          }).toList(),
-        ),
-      ),
-    );
-  }*/
 }
