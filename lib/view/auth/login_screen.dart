@@ -123,14 +123,14 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
 
                 Padding(
-                  padding: const EdgeInsets.all(20.0),
+                  padding: const EdgeInsets.all(16.0),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       RichText(
                         textAlign: TextAlign.center,
                         text: TextSpan(
-                          text: 'By setting up an account, you confirm that you have accepted our ',
+                          text: 'By setting up an account, you accept our ',
                           style: TextStyle(
                             fontSize: 15,
                             color: Colors.black87,
@@ -138,7 +138,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           ),
                           children: [
                             TextSpan(
-                              text: 'Privacy Policy',
+                              text: 'privacy policy',
                               style: TextStyle(
                                 fontSize: 15,
                                 color: kPrimaryColor,
@@ -150,7 +150,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                 },
                             ),
                             TextSpan(
-                              text: ' and our terms of service.',
+                              text: ' and agree to follow all applicable laws.', // Replaced " and our terms of service." with a period
                               style: TextStyle(
                                 fontSize: 15,
                                 color: Colors.black87,

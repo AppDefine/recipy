@@ -32,7 +32,7 @@ class _PrivacyPolicyState extends State<PrivacyPolicy> {
                 'Your data is utilized to optimize app features, deliver personalized recipe suggestions, and maintain a secure environment. This helps us continuously improve and adapt Recipy to better meet your needs.'),
             buildSectionTitle('🔒 Information Security and Storage'),
             buildSectionContent(
-                'We employ robust security measures to safeguard your data and retain personal information only for as long as necessary. You can request data deletion at any time by reaching out to support@recipyapp.com.'),
+                'We employ robust security measures to safeguard your data and retain personal information only for as long as necessary. You can request data deletion at any time by reaching out to support@testrecipy.com.'),
             buildSectionTitle('🔄 Changes to This Policy'),
             buildSectionContent(
                 'We may update this policy periodically to reflect changes in our practices. Significant updates will be communicated through email or prominent notices within the app.'),
@@ -41,7 +41,7 @@ class _PrivacyPolicyState extends State<PrivacyPolicy> {
                 'This privacy policy applies exclusively to the Recipy mobile application and associated services. It does not extend to third-party platforms or external links accessed through the app.'),
             Divider(height: 32, thickness: 1.0, color: kPrimaryColor),
             Text(
-              'For any inquiries or concerns, please contact us at support@recipyapp.com.',
+              'For any inquiries or concerns, please contact us at support@testrecipy.com.',
               style: TextStyle(
                 fontSize: 16,
                 fontFamily: 'Georgia',
