@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:loading_overlay/loading_overlay.dart';
@@ -33,7 +34,7 @@ class _LoginScreenState extends State<LoginScreen> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                // Header Section
+
                 Padding(
                   padding:
                   const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
@@ -61,7 +62,6 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                 ),
 
-                // Sign-In Options
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 20),
                   child: Column(
@@ -122,34 +122,49 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                 ),
 
-                // Footer Section
                 Padding(
                   padding: const EdgeInsets.all(20.0),
                   child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      Text(
-                        'By signing up, you agree to our',
+                      RichText(
                         textAlign: TextAlign.center,
-                        style: TextStyle(fontSize: 14, color: Colors.black54),
-                      ),
-                      GestureDetector(
-                        onTap: () {
-                          Get.off(()=>PrivacyPolicy());
-                        },
-                        child: Text(
-                          'Privacy Policy, Terms of Use, and Code of Conduct.',
-                          textAlign: TextAlign.center,
+                        text: TextSpan(
+                          text: 'By setting up an account, you confirm that you have accepted our ',
                           style: TextStyle(
-                            fontSize: 14,
-                            color: kPrimaryColor,
-                            fontWeight: FontWeight.bold,
-                            decoration: TextDecoration.underline,
+                            fontSize: 15,
+                            color: Colors.black87,
+                            height: 1.6,
                           ),
+                          children: [
+                            TextSpan(
+                              text: 'Privacy Policy',
+                              style: TextStyle(
+                                fontSize: 15,
+                                color: kPrimaryColor,
+                                fontWeight: FontWeight.bold,
+                              ),
+                              recognizer: TapGestureRecognizer()
+                                ..onTap = () {
+                                  Get.to(() => PrivacyPolicy());
+                                },
+                            ),
+                            TextSpan(
+                              text: ' and our terms of service.',
+                              style: TextStyle(
+                                fontSize: 15,
+                                color: Colors.black87,
+                              ),
+                            ),
+                          ],
                         ),
                       ),
+                      const SizedBox(height: 10),
                     ],
                   ),
-                ),
+                )
+
+
               ],
             ),
           ),
