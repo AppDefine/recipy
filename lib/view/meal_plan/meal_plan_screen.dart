@@ -18,8 +18,8 @@ class _MealPlanScreenState extends State<MealPlanScreen> {
 
   @override
   void initState() {
-    getDocIdMealPlan();
     super.initState();
+    getDocIdMealPlan();
   }
 
   getDocIdMealPlan() async {
@@ -51,208 +51,200 @@ class _MealPlanScreenState extends State<MealPlanScreen> {
       body: Obx(() => controller.isLoading.value
           ? Center(child: CircularProgressIndicator(color: kPrimaryColor))
           : Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: StreamBuilder<QuerySnapshot>(
-                stream: FirebaseFirestore.instance
-                    .collection('meal-plan')
-                    .snapshots(),
-                builder: (context, snapshot) {
-                  if (snapshot.connectionState == ConnectionState.waiting) {
-                    return const Center(child: CircularProgressIndicator());
-                  }
+        padding: const EdgeInsets.all(16.0),
+        child: StreamBuilder<QuerySnapshot>(
+          stream: FirebaseFirestore.instance
+              .collection('premium-meal-plan') // Adjusted collection name
+              .snapshots(),
+          builder: (context, snapshot) {
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              return const Center(child: CircularProgressIndicator());
+            }
 
-                  if (!snapshot.hasData || snapshot.data!.docs.isEmpty) {
-                    return const Center(
-                      child: Text('No meal plans available.'),
-                    );
-                  }
+            if (!snapshot.hasData || snapshot.data!.docs.isEmpty) {
+              return const Center(
+                child: Text('No meal plans available.'),
+              );
+            }
 
-                  final mealPlans = snapshot.data!.docs;
+            final mealPlans = snapshot.data!.docs;
 
-                  return ListView.builder(
-                    itemCount: mealPlans.length,
-                    itemBuilder: (context, index) {
-                      final mealPlan =
-                          mealPlans[index].data() as Map<String, dynamic>;
-                      return Card(
-                        margin: const EdgeInsets.only(bottom: 16.0),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(16.0),
-                        ),
-                        elevation: 2.0,
-                        child: Padding(
-                          padding: const EdgeInsets.all(16.0),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Row(
-                                crossAxisAlignment: CrossAxisAlignment.start,
+            return ListView.builder(
+              itemCount: mealPlans.length,
+              itemBuilder: (context, index) {
+                final mealPlan =
+                mealPlans[index].data() as Map<String, dynamic>;
+                return Card(
+                  margin: const EdgeInsets.only(bottom: 16.0),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(16.0),
+                  ),
+                  elevation: 2.0,
+                  child: Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            // Image
+                            Container(
+                              width: 100,
+                              height: 100,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(12.0),
+                                image: DecorationImage(
+                                  fit: BoxFit.cover,
+                                  image: NetworkImage(mealPlan['image']),
+                                ),
+                              ),
+                            ),
+                            const SizedBox(width: 16.0),
+                            // Info
+                            Expanded(
+                              child: Column(
+                                crossAxisAlignment:
+                                CrossAxisAlignment.start,
                                 children: [
-                                  // Image
-                                  Container(
-                                    width: 100,
-                                    height: 100,
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(12.0),
-                                      image: DecorationImage(
-                                        fit: BoxFit.cover,
-                                        image: NetworkImage(mealPlan['image']),
-                                      ),
+                                  Text(
+                                    mealPlan['title'],
+                                    style: const TextStyle(
+                                      fontSize: 20.0,
+                                      fontWeight: FontWeight.bold,
                                     ),
                                   ),
-                                  const SizedBox(width: 16.0),
-                                  // Info
-                                  Expanded(
-                                    child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Text(
-                                          mealPlan['title'],
-                                          style: const TextStyle(
-                                            fontSize: 20.0,
-                                            fontWeight: FontWeight.bold,
+                                  const SizedBox(height: 8.0),
+                                  Row(
+                                    mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Text(
+                                        mealPlan['duration'],
+                                        style: const TextStyle(
+                                          fontSize: 14.0,
+                                          color: Colors.black,
+                                        ),
+                                      ),
+                                      Text(
+                                        mealPlan['meals'],
+                                        style: const TextStyle(
+                                          fontSize: 14.0,
+                                          color: Colors.black,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  const SizedBox(height: 8.0),
+                                  Row(
+                                    mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      listOfDocIdMealPlan
+                                          .contains(mealPlan['docId'])
+                                          ? FilledButton.icon(
+                                        onPressed: () {
+                                          Get.to(() => MealPlanExploreScreen(
+                                            mealPlan: mealPlan, // Pass the meal plan title dynamically
+                                          ));
+                                        },
+                                        icon: const Icon(
+                                            Icons.coffee_outlined,
+                                            size: 16.0),
+                                        label: const Text('Explore'),
+                                        style: FilledButton.styleFrom(
+                                          backgroundColor:
+                                          kPrimaryColor, // Set custom background color
+                                          shape:
+                                          RoundedRectangleBorder(
+                                            borderRadius:
+                                            BorderRadius
+                                                .circular(8.0),
                                           ),
                                         ),
-                                        const SizedBox(height: 8.0),
-                                        Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceBetween,
-                                          children: [
-                                            Text(
-                                              mealPlan['duration'],
-                                              style: const TextStyle(
-                                                fontSize: 14.0,
-                                                color: Colors.black,
-                                              ),
-                                            ),
-                                            Text(
-                                              mealPlan['meals'],
-                                              style: const TextStyle(
-                                                fontSize: 14.0,
-                                                color: Colors.black,
-                                              ),
-                                            ),
-                                          ],
+                                      )
+                                          : FilledButton.icon(
+                                        onPressed: () async {
+                                          String currency = "usd";
+                                          bool paymentSuccess =
+                                          await controller
+                                              .makePayment(
+                                            double.parse(
+                                                mealPlan['price']),
+                                            currency,
+                                          );
+
+                                          if (paymentSuccess) {
+                                            CollectionReference
+                                            users =
+                                            FirebaseFirestore
+                                                .instance
+                                                .collection(
+                                                'users');
+                                            final pref = Constants
+                                                .securePreferences();
+                                            var uid =
+                                            await pref.read(
+                                                key: Constants
+                                                    .uid);
+
+                                            if(uid != null){
+                                              await users
+                                                  .doc(uid)
+                                                  .update({
+                                                'docIDMealPlan':
+                                                FieldValue
+                                                    .arrayUnion([mealPlan['docId']]),
+                                              });
+                                              getDocIdMealPlan();
+                                            }
+                                          } else {}
+                                        },
+                                        icon: const Icon(
+                                            Icons.shopping_cart,
+                                            size: 16.0),
+                                        label: const Text('Buy Now'),
+                                        style: FilledButton.styleFrom(
+                                          shape:
+                                          RoundedRectangleBorder(
+                                            borderRadius:
+                                            BorderRadius
+                                                .circular(8.0),
+                                          ),
                                         ),
-                                        const SizedBox(height: 8.0),
-                                        Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceBetween,
-                                          children: [
-                                            listOfDocIdMealPlan
-                                                    .contains(mealPlan['docId'])
-                                                ? FilledButton.icon(
-                                              onPressed: () {
-                                                Get.to(() => MealPlanExploreScreen(
-                                                  mealPlanType: mealPlan['title'], // Pass the meal plan title dynamically
-                                                ));
-                                              },
-                                              icon: const Icon(
-                                                        Icons.coffee_outlined,
-                                                        size: 16.0),
-                                                    label:
-                                                        const Text('Explore'),
-                                                    style:
-                                                        FilledButton.styleFrom(
-                                                      backgroundColor:
-                                                          kPrimaryColor, // Set custom background color
-                                                      shape:
-                                                          RoundedRectangleBorder(
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(8.0),
-                                                      ),
-                                                    ),
-                                                  )
-                                                : FilledButton.icon(
-                                                    onPressed: () async {
-                                                      String currency = "usd";
-                                                      bool paymentSuccess =
-                                                          await controller
-                                                              .makePayment(
-                                                        double.parse(
-                                                            mealPlan['price']),
-                                                        currency,
-                                                      );
-
-                                                      if (paymentSuccess) {
-
-                                                        CollectionReference
-                                                            users =
-                                                            FirebaseFirestore
-                                                                .instance
-                                                                .collection(
-                                                                    'users');
-                                                        final pref = Constants
-                                                            .securePreferences();
-                                                        var uid =
-                                                            await pref.read(
-                                                                key: Constants
-                                                                    .uid);
-
-                                                        if(uid != null){
-                                                          await users
-                                                              .doc(uid)
-                                                              .update({
-                                                            'docIDMealPlan':
-                                                            FieldValue
-                                                                .arrayUnion([
-                                                              mealPlan['docId'],
-                                                            ]),
-                                                          });
-                                                          getDocIdMealPlan();
-                                                        }
-
-                                                      } else {}
-                                                    },
-                                                    icon: const Icon(
-                                                        Icons.shopping_cart,
-                                                        size: 16.0),
-                                                    label:
-                                                        const Text('Buy Now'),
-                                                    style:
-                                                        FilledButton.styleFrom(
-                                                      shape:
-                                                          RoundedRectangleBorder(
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(8.0),
-                                                      ),
-                                                    ),
-                                                  ),
-                                            Text(
-                                              "\$" + mealPlan['price'],
-                                              style: const TextStyle(
-                                                fontSize: 16.0,
-                                                fontWeight: FontWeight.bold,
-                                                color: Colors.green,
-                                              ),
-                                            ),
-                                          ],
+                                      ),
+                                      Text(
+                                        "\$" + mealPlan['price'],
+                                        style: const TextStyle(
+                                          fontSize: 16.0,
+                                          fontWeight: FontWeight.bold,
+                                          color: Colors.green,
                                         ),
-                                      ],
-                                    ),
+                                      ),
+                                    ],
                                   ),
                                 ],
                               ),
-                              const SizedBox(height: 16.0),
-                              Text(
-                                mealPlan['description'],
-                                style: const TextStyle(
-                                  fontSize: 14.0,
-                                  color: Colors.black,
-                                ),
-                              ),
-                            ],
+                            ),
+                          ],
+                        ),
+                        const SizedBox(height: 16.0),
+                        Text(
+                          mealPlan['description'],
+                          style: const TextStyle(
+                            fontSize: 14.0,
+                            color: Colors.black,
                           ),
                         ),
-                      );
-                    },
-                  );
-                },
-              ),
-            )),
+                      ],
+                    ),
+                  ),
+                );
+              },
+            );
+          },
+        ),
+      )),
     );
   }
 }

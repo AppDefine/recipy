@@ -66,7 +66,7 @@ class _PremiumMealScreenState extends State<PremiumMealScreen> {
     );
   }
 
-  Widget _buildIngredientsList(List<String> ingredients) {
+  Widget _buildIngredientsList(List<dynamic> ingredients) {
     return Card(
       elevation: 2,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
@@ -123,7 +123,7 @@ class _PremiumMealScreenState extends State<PremiumMealScreen> {
     );
   }
 
-  Widget _buildStepsList(List<String> steps) {
+  Widget _buildStepsList(List<dynamic> steps) {
     return Card(
       elevation: 2,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),

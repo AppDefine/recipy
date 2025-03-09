@@ -1,0 +1,234 @@
+addPremiumMealPlans();
+
+final Map<String, dynamic> mealPlanDetails = {
+    "Diet Meal Plan": {
+      "title": "Diet Meal Plan",
+      "description":
+      "A balanced diet plan to maintain overall health and well-being.",
+      "price": "19.99",
+      "image":
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_pdDITl-_on_oQizgPc2_R_CwL0NhQ6eccQ&s",
+      "duration": "8 Weeks",
+      "meals": "56 Meals",
+      "mealsList": {
+        "Breakfast": [
+          {
+            "name": "Oats with fruits and nuts",
+            "ingredients": [
+              "1 cup oats",
+              "1/2 cup milk or plant-based milk",
+              "1/4 cup fruits (banana, berries, etc.)",
+              "2 tbsp nuts (almonds, walnuts, etc.)"
+            ],
+            "steps": [
+              "Boil the oats in milk until soft.",
+              "Add fruits and nuts on top.",
+              "Serve warm."
+            ]
+          }
+        ],
+        "Lunch": [
+          {
+            "name": "Grilled paneer salad",
+            "ingredients": [
+              "100g paneer (or tofu for vegan)",
+              "1 cup mixed greens",
+              "1/4 cup cherry tomatoes",
+              "1 tbsp olive oil",
+              "1 tbsp lemon juice"
+            ],
+            "steps": [
+              "Grill the paneer or tofu until golden brown.",
+              "Mix greens, tomatoes, olive oil, and lemon juice in a bowl.",
+              "Add grilled paneer on top and serve."
+            ]
+          }
+        ],
+        "Dinner": [
+          {
+            "name": "Vegetable soup with bread",
+            "ingredients": [
+              "2 cups mixed vegetables (carrots, celery, potatoes, etc.)",
+              "4 cups vegetable stock",
+              "1 tbsp olive oil",
+              "1 clove garlic (minced)",
+              "Optional: whole-grain bread for serving"
+            ],
+            "steps": [
+              "Heat olive oil in a pot and sauté garlic.",
+              "Add vegetables and vegetable stock, and bring to a boil.",
+              "Simmer until vegetables are tender and serve with bread."
+            ]
+          }
+        ]
+      }
+    },
+    "Weight Gain Meal Plan": {
+      "title": "Weight Gain Meal Plan",
+      "description":
+      "Fuel your body with high-protein meals that promote muscle growth and strength.",
+      "price": "24.99",
+      "image":
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTNyLAdFsIziWURqD2CY0_yqoo62Ew5TS2HVA&s",
+      "duration": "8 Weeks",
+      "meals": "56 Meals",
+      "mealsList": {
+        "Breakfast": [
+          {
+            "name": "Oats with fruits and nuts",
+            "ingredients": [
+              "1 cup oats",
+              "1/2 cup milk or plant-based milk",
+              "1/4 cup fruits (banana, berries, etc.)",
+              "2 tbsp nuts (almonds, walnuts, etc.)"
+            ],
+            "steps": [
+              "Boil the oats in milk until soft.",
+              "Add fruits and nuts on top.",
+              "Serve warm."
+            ]
+          }
+        ],
+        "Lunch": [
+          {
+            "name": "Grilled paneer salad",
+            "ingredients": [
+              "100g paneer (or tofu for vegan)",
+              "1 cup mixed greens",
+              "1/4 cup cherry tomatoes",
+              "1 tbsp olive oil",
+              "1 tbsp lemon juice"
+            ],
+            "steps": [
+              "Grill the paneer or tofu until golden brown.",
+              "Mix greens, tomatoes, olive oil, and lemon juice in a bowl.",
+              "Add grilled paneer on top and serve."
+            ]
+          }
+        ],
+        "Dinner": [
+          {
+            "name": "Vegetable soup with bread",
+            "ingredients": [
+              "2 cups mixed vegetables (carrots, celery, potatoes, etc.)",
+              "4 cups vegetable stock",
+              "1 tbsp olive oil",
+              "1 clove garlic (minced)",
+              "Optional: whole-grain bread for serving"
+            ],
+            "steps": [
+              "Heat olive oil in a pot and sauté garlic.",
+              "Add vegetables and vegetable stock, and bring to a boil.",
+              "Simmer until vegetables are tender and serve with bread."
+            ]
+          }
+        ]
+      }
+    },
+    "Weight Loss Meal Plan": {
+      "title": "Weight Loss Meal Plan",
+      "description":
+      "A meal plan designed to help achieve weight loss goals with balanced and calorie-conscious meals.",
+      "price": "19.99",
+      "image":
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_pdDITl-_on_oQizgPc2_R_CwL0NhQ6eccQ&s",
+      "duration": "8 Weeks",
+      "meals": "56 Meals",
+      "mealsList": {
+        "Breakfast": [
+          {
+            "name": "Oats with fruits and nuts",
+            "ingredients": [
+              "1 cup oats",
+              "1/2 cup milk or plant-based milk",
+              "1/4 cup fruits (banana, berries, etc.)",
+              "2 tbsp nuts (almonds, walnuts, etc.)"
+            ],
+            "steps": [
+              "Boil the oats in milk until soft.",
+              "Add fruits and nuts on top.",
+              "Serve warm."
+            ]
+          }
+        ],
+        "Lunch": [
+          {
+            "name": "Grilled vegetable wrap",
+            "ingredients": [
+              "1 whole-grain wrap",
+              "1/2 cup grilled vegetables (zucchini, bell peppers, etc.)",
+              "1/4 cup hummus",
+              "1 tbsp feta cheese (optional)"
+            ],
+            "steps": [
+              "Spread hummus over the wrap.",
+              "Add grilled vegetables and feta cheese.",
+              "Roll the wrap tightly and serve."
+            ]
+          }
+        ],
+        "Dinner": [
+          {
+            "name": "Vegetable stir-fry with tofu",
+            "ingredients": [
+              "1 cup mixed vegetables (broccoli, carrots, bell peppers, etc.)",
+              "100g tofu (cubed)",
+              "1 tbsp soy sauce",
+              "1 tsp sesame oil"
+            ],
+            "steps": [
+              "Heat sesame oil in a pan and stir-fry tofu until golden.",
+              "Add vegetables and soy sauce, cook until tender.",
+              "Serve immediately."
+            ]
+          }
+        ]
+      }
+    }
+  };
+
+ Future<void> addPremiumMealPlans() async {
+    CollectionReference premiumMeals =
+    FirebaseFirestore.instance.collection('premium-meal-plan');
+
+
+
+    // Loop through each meal plan and add it to Firestore
+    for (var mealPlanType in mealPlanDetails.keys) {
+      var mealPlan = mealPlanDetails[mealPlanType];
+
+      // Add the meal plan (top-level collection)
+      await premiumMeals.add(mealPlan).then((value) async {
+        premiumMeals.doc(value.id).set({
+          'docId' : value.id,
+          'title': mealPlan['title'],
+        'description': mealPlan['description'],
+        'price': mealPlan['price'],
+        'image': mealPlan['image'],
+        'duration': mealPlan['duration'],
+        'meals': mealPlan['meals'],
+        });
+        String docId = value.id;
+
+        // Add meals as a sub-collection (nested collection)
+        CollectionReference mealsCollection =
+        premiumMeals.doc(docId).collection('meals');
+        for (var mealType in mealPlan['mealsList'].keys) {
+          List<dynamic> meals = mealPlan['mealsList'][mealType];
+
+          for (var meal in meals) {
+            await mealsCollection.add({
+              'mealType': mealType,
+              'name': meal['name'],
+              'ingredients': meal['ingredients'],
+              'steps': meal['steps'],
+            });
+          }
+        }
+      }).catchError((error) {
+        print("Failed to add meal plan: $error");
+      });
+    }
+
+    print("All premium meal plans added successfully!");
+  }
