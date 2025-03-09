@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:recipy/view/auth/login_screen.dart';
+import 'package:lottie/lottie.dart';
 import 'package:recipy/view/dashboard_screen.dart';
 
 import '../../utils/constants.dart';
+import 'login_screen.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -14,44 +14,43 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
-
   @override
   void initState() {
-    Future.delayed(Duration(seconds: 2),() {
-      navigationFun();
-    },);
     super.initState();
+    Future.delayed(const Duration(seconds: 4), _navigate);
   }
 
-  Future<void> navigationFun() async {
+  Future<void> _navigate() async {
     final pref = Constants.securePreferences();
-    var isLogin  = await pref.read(key: Constants.isLogin);
-    if(isLogin==true.toString()){
-      Get.offAll(()=>DashboardScreen());
-    }else{
-      Get.offAll(()=>LoginScreen());
-    }
+    final isLogin = await pref.read(key: Constants.isLogin);
+    Get.offAll(() => isLogin == true.toString() ? DashboardScreen() : LoginScreen());
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-       body: Container(
-         height: MediaQuery.of(context).size.height,
-         width: MediaQuery.of(context).size.width,
-         color: Colors.white,
-         alignment: Alignment.center,
-         child: SingleChildScrollView(
-           child: Column(
-             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-             children: [
-               Text(Constants.appName,style: TextStyle(color: Colors.red,fontSize: 35,fontWeight: FontWeight.bold),),
-               SizedBox(height: 100,),
-               CircularProgressIndicator(color: Colors.red,),
-             ],
-           ),
-         ),
-       ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Lottie.asset(
+              'assets/splash_animation.json', // Ensure the animation path is correct
+              width: 300,
+              height: 300,
+              fit: BoxFit.contain,
+            ),
+            const SizedBox(height: 20),
+            Text(
+              Constants.appName,
+              style: const TextStyle(
+                color: kPrimaryColor,
+                fontSize: 35,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
