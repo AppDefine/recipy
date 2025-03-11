@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:recipy/utils/constants.dart';
 
@@ -11,6 +12,13 @@ class PremiumMealScreen extends StatefulWidget {
 }
 
 class _PremiumMealScreenState extends State<PremiumMealScreen> {
+
+  @override
+  void initState() {
+    super.initState();
+  }
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,8 +47,6 @@ class _PremiumMealScreenState extends State<PremiumMealScreen> {
       ),
     );
   }
-
-
 
   Widget _buildSectionTitle(String title) {
     return Container(

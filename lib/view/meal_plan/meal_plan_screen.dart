@@ -54,7 +54,7 @@ class _MealPlanScreenState extends State<MealPlanScreen> {
         padding: const EdgeInsets.all(16.0),
         child: StreamBuilder<QuerySnapshot>(
           stream: FirebaseFirestore.instance
-              .collection('premium-meal-plan') // Adjusted collection name
+              .collection('meal-plan') // Adjusted collection name
               .snapshots(),
           builder: (context, snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
@@ -149,7 +149,7 @@ class _MealPlanScreenState extends State<MealPlanScreen> {
                                           ));
                                         },
                                         icon: const Icon(
-                                            Icons.coffee_outlined,
+                                            Icons.restaurant,
                                             size: 16.0),
                                         label: const Text('Explore'),
                                         style: FilledButton.styleFrom(

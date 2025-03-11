@@ -1,0 +1,467 @@
+// addPremiumMealPlans();
+
+/*  final Map<String, dynamic> mealPlanDetails = {
+    "Diet Meal Plan": {
+      "title": "Diet Meal Plan",
+      "description": "A balanced diet plan to maintain overall health and well-being.",
+      "price": "19.99",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_pdDITl-_on_oQizgPc2_R_CwL0NhQ6eccQ&s",
+      "duration": "8 Weeks",
+      "meals": "56 Meals",
+      "mealsList": {
+        "Breakfast": [
+          {
+            "name": "Oatmeal with chia seeds",
+            "ingredients": [
+              "1/2 cup rolled oats",
+              "1 cup almond milk",
+              "1 tbsp chia seeds",
+              "1 tsp honey"
+            ],
+            "steps": [
+              "Cook oats in almond milk over medium heat until thickened.",
+              "Stir in chia seeds and honey.",
+              "Serve warm."
+            ]
+          },
+          {
+            "name": "Scrambled eggs with spinach",
+            "ingredients": [
+              "2 large eggs",
+              "1 cup fresh spinach",
+              "1 tsp olive oil",
+              "1 pinch salt and pepper"
+            ],
+            "steps": [
+              "Heat olive oil in a pan and sauté spinach until wilted.",
+              "Whisk eggs and pour into the pan, stirring until cooked.",
+              "Season with salt and pepper, then serve."
+            ]
+          },
+          {
+            "name": "Whole-grain toast with almond butter",
+            "ingredients": [
+              "1 slice whole-grain bread",
+              "1 tbsp almond butter",
+              "1/2 banana (sliced)",
+              "1 pinch cinnamon"
+            ],
+            "steps": [
+              "Toast the bread until crispy.",
+              "Spread almond butter and top with banana slices.",
+              "Sprinkle with cinnamon and serve."
+            ]
+          }
+        ],
+        "Lunch": [
+          {
+            "name": "Grilled chicken salad",
+            "ingredients": [
+              "100g grilled chicken breast",
+              "2 cups mixed greens",
+              "1/4 cup cucumber (sliced)",
+              "1 tbsp balsamic vinaigrette"
+            ],
+            "steps": [
+              "Grill chicken breast until fully cooked.",
+              "Toss greens and cucumber with vinaigrette.",
+              "Slice chicken and place on top, then serve."
+            ]
+          },
+          {
+            "name": "Quinoa and roasted vegetable bowl",
+            "ingredients": [
+              "1/2 cup cooked quinoa",
+              "1 cup roasted vegetables (zucchini, carrots, etc.)",
+              "1 tbsp tahini",
+              "1 tsp lemon juice"
+            ],
+            "steps": [
+              "Roast vegetables in the oven at 200°C (400°F) for 20 minutes.",
+              "Mix quinoa and vegetables in a bowl.",
+              "Drizzle with tahini and lemon juice, then serve."
+            ]
+          },
+          {
+            "name": "Lentil and vegetable stew",
+            "ingredients": [
+              "1/2 cup cooked lentils",
+              "1 cup diced vegetables (carrots, celery, etc.)",
+              "2 cups vegetable broth",
+              "1 tsp cumin"
+            ],
+            "steps": [
+              "In a pot, combine lentils, vegetables, broth, and cumin.",
+              "Simmer for 20 minutes until vegetables are tender.",
+              "Serve hot."
+            ]
+          }
+        ],
+        "Dinner": [
+          {
+            "name": "Baked salmon with asparagus",
+            "ingredients": [
+              "120g salmon fillet",
+              "1 cup asparagus spears",
+              "1 tbsp olive oil",
+              "1 tsp garlic powder"
+            ],
+            "steps": [
+              "Preheat oven to 180°C (350°F).",
+              "Place salmon and asparagus on a baking sheet, drizzle with olive oil, and sprinkle with garlic powder.",
+              "Bake for 15-20 minutes, then serve."
+            ]
+          },
+          {
+            "name": "Vegetable stir-fry with brown rice",
+            "ingredients": [
+              "1/2 cup cooked brown rice",
+              "1 cup mixed vegetables (broccoli, bell peppers, etc.)",
+              "1 tbsp soy sauce",
+              "1 tsp sesame oil"
+            ],
+            "steps": [
+              "Heat sesame oil in a pan and stir-fry vegetables until tender.",
+              "Add soy sauce and mix in cooked brown rice.",
+              "Serve hot."
+            ]
+          },
+          {
+            "name": "Turkey stuffed peppers",
+            "ingredients": [
+              "2 bell peppers",
+              "1/2 cup ground turkey",
+              "1/4 cup diced tomatoes",
+              "1 tsp Italian seasoning"
+            ],
+            "steps": [
+              "Cut tops off peppers and remove seeds.",
+              "Cook turkey with tomatoes and seasoning, then stuff into peppers.",
+              "Bake at 180°C (350°F) for 25 minutes."
+            ]
+          }
+        ]
+      }
+    },
+    "Weight Gain Meal Plan": {
+      "title": "Weight Gain Meal Plan",
+      "description": "Fuel your body with high-protein meals that promote muscle growth and strength.",
+      "price": "24.99",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn9GcTNyLAdFsIziWURqD2CY0_yqoo62Ew5TS2HVA&s",
+      "duration": "8 Weeks",
+      "meals": "56 Meals",
+      "mealsList": {
+        "Breakfast": [
+          {
+            "name": "Peanut butter banana smoothie",
+            "ingredients": [
+              "1 banana",
+              "2 tbsp peanut butter",
+              "1 cup whole milk",
+              "1 scoop protein powder"
+            ],
+            "steps": [
+              "Blend banana, peanut butter, milk, and protein powder until smooth.",
+              "Pour into a glass and serve immediately."
+            ]
+          },
+          {
+            "name": "Egg and cheese muffin",
+            "ingredients": [
+              "2 large eggs",
+              "1 whole-grain English muffin",
+              "1 slice cheddar cheese",
+              "1 tbsp butter"
+            ],
+            "steps": [
+              "Scramble eggs in butter until fully cooked.",
+              "Toast the muffin, add eggs and cheese, then close.",
+              "Serve warm."
+            ]
+          },
+          {
+            "name": "Oatmeal with nuts and seeds",
+            "ingredients": [
+              "1 cup rolled oats",
+              "1 cup whole milk",
+              "2 tbsp mixed nuts (almonds, walnuts)",
+              "1 tbsp flaxseeds"
+            ],
+            "steps": [
+              "Cook oats in milk until creamy.",
+              "Stir in nuts and flaxseeds.",
+              "Serve warm."
+            ]
+          }
+        ],
+        "Lunch": [
+          {
+            "name": "Beef and rice bowl",
+            "ingredients": [
+              "150g ground beef",
+              "1 cup cooked white rice",
+              "1/2 cup steamed broccoli",
+              "1 tbsp teriyaki sauce"
+            ],
+            "steps": [
+              "Cook beef in a pan until browned.",
+              "Mix rice, beef, and broccoli in a bowl.",
+              "Drizzle with teriyaki sauce and serve."
+            ]
+          },
+          {
+            "name": "Chicken and sweet potato mash",
+            "ingredients": [
+              "150g grilled chicken thigh",
+              "1 medium sweet potato (mashed)",
+              "1 tbsp butter",
+              "1 pinch salt"
+            ],
+            "steps": [
+              "Grill chicken until cooked through.",
+              "Boil and mash sweet potato with butter and salt.",
+              "Serve chicken alongside mash."
+            ]
+          },
+          {
+            "name": "Pasta with creamy beef sauce",
+            "ingredients": [
+              "1 cup cooked pasta",
+              "100g ground beef",
+              "1/2 cup heavy cream",
+              "1 tsp garlic powder"
+            ],
+            "steps": [
+              "Cook beef in a pan, then stir in cream and garlic powder.",
+              "Mix in cooked pasta until coated.",
+              "Serve hot."
+            ]
+          }
+        ],
+        "Dinner": [
+          {
+            "name": "Salmon with quinoa and avocado",
+            "ingredients": [
+              "150g salmon fillet",
+              "1 cup cooked quinoa",
+              "1/2 avocado (sliced)",
+              "1 tbsp olive oil"
+            ],
+            "steps": [
+              "Pan-sear salmon in olive oil until crispy.",
+              "Serve alongside quinoa and avocado slices."
+            ]
+          },
+          {
+            "name": "Steak with mashed potatoes",
+            "ingredients": [
+              "150g sirloin steak",
+              "1 cup mashed potatoes (with butter)",
+              "1/2 cup steamed green beans",
+              "1 tsp pepper"
+            ],
+            "steps": [
+              "Grill steak to desired doneness and season with pepper.",
+              "Prepare mashed potatoes with butter.",
+              "Serve with green beans."
+            ]
+          },
+          {
+            "name": "Chicken Alfredo pasta",
+            "ingredients": [
+              "1 cup cooked fettuccine",
+              "100g chicken breast (cubed)",
+              "1/2 cup Alfredo sauce",
+              "1 tbsp parmesan cheese"
+            ],
+            "steps": [
+              "Cook chicken in a pan until golden.",
+              "Stir in Alfredo sauce and cooked pasta.",
+              "Top with parmesan and serve."
+            ]
+          }
+        ]
+      }
+    },
+    "Weight Loss Meal Plan": {
+      "title": "Weight Loss Meal Plan",
+      "description": "A meal plan designed to help achieve weight loss goals with balanced and calorie-conscious meals.",
+      "price": "19.99",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn9GcT_pdDITl-_on_oQizgPc2_R_CwL0NhQ6eccQ&s",
+      "duration": "8 Weeks",
+      "meals": "56 Meals",
+      "mealsList": {
+        "Breakfast": [
+          {
+            "name": "Green smoothie",
+            "ingredients": [
+              "1 cup spinach",
+              "1/2 banana",
+              "1 cup water",
+              "1 tbsp chia seeds"
+            ],
+            "steps": [
+              "Blend spinach, banana, water, and chia seeds until smooth.",
+              "Pour into a glass and serve chilled."
+            ]
+          },
+          {
+            "name": "Egg white omelette",
+            "ingredients": [
+              "3 egg whites",
+              "1/2 cup diced bell peppers",
+              "1 tsp olive oil",
+              "1 pinch salt"
+            ],
+            "steps": [
+              "Heat olive oil in a pan and sauté bell peppers.",
+              "Whisk egg whites, pour into the pan, and cook until set.",
+              "Season with salt and serve."
+            ]
+          },
+          {
+            "name": "Cottage cheese with berries",
+            "ingredients": [
+              "1/2 cup low-fat cottage cheese",
+              "1/2 cup mixed berries (strawberries, blueberries)",
+              "1 tsp honey"
+            ],
+            "steps": [
+              "Scoop cottage cheese into a bowl.",
+              "Top with berries and drizzle with honey.",
+              "Serve immediately."
+            ]
+          }
+        ],
+        "Lunch": [
+          {
+            "name": "Turkey lettuce wraps",
+            "ingredients": [
+              "100g ground turkey",
+              "2 large lettuce leaves",
+              "1/4 cup shredded carrots",
+              "1 tbsp low-fat mayo"
+            ],
+            "steps": [
+              "Cook turkey in a pan until browned.",
+              "Mix with mayo and carrots, then spoon into lettuce leaves.",
+              "Wrap and serve."
+            ]
+          },
+          {
+            "name": "Zucchini noodle salad",
+            "ingredients": [
+              "1 cup spiralized zucchini",
+              "1/4 cup cherry tomatoes (halved)",
+              "1 tbsp olive oil",
+              "1 tsp lemon juice"
+            ],
+            "steps": [
+              "Toss zucchini noodles and tomatoes in a bowl.",
+              "Drizzle with olive oil and lemon juice.",
+              "Serve fresh."
+            ]
+          },
+          {
+            "name": "Grilled fish with steamed veggies",
+            "ingredients": [
+              "100g cod fillet",
+              "1 cup steamed broccoli",
+              "1 tsp olive oil",
+              "1 pinch pepper"
+            ],
+            "steps": [
+              "Grill cod with olive oil and pepper until flaky.",
+              "Steam broccoli until tender.",
+              "Serve together."
+            ]
+          }
+        ],
+        "Dinner": [
+          {
+            "name": "Chicken and cauliflower rice",
+            "ingredients": [
+              "100g chicken breast",
+              "1 cup cauliflower rice",
+              "1 tsp soy sauce",
+              "1 tsp olive oil"
+            ],
+            "steps": [
+              "Grill chicken until cooked through.",
+              "Sauté cauliflower rice in olive oil with soy sauce.",
+              "Slice chicken and serve over rice."
+            ]
+          },
+          {
+            "name": "Baked tilapia with kale",
+            "ingredients": [
+              "120g tilapia fillet",
+              "1 cup kale",
+              "1 tsp olive oil",
+              "1 tsp garlic powder"
+            ],
+            "steps": [
+              "Preheat oven to 180°C (350°F).",
+              "Place tilapia and kale on a baking sheet, drizzle with oil, and sprinkle with garlic powder.",
+              "Bake for 15 minutes, then serve."
+            ]
+          },
+          {
+            "name": "Spaghetti squash with marinara",
+            "ingredients": [
+              "1 cup cooked spaghetti squash",
+              "1/2 cup low-sugar marinara sauce",
+              "1 tbsp parmesan cheese (optional)"
+            ],
+            "steps": [
+              "Roast spaghetti squash at 200°C (400°F) for 40 minutes, then scrape out strands.",
+              "Heat marinara sauce and mix with squash.",
+              "Top with parmesan if desired and serve."
+            ]
+          }
+        ]
+      }
+    }
+  };
+
+  Future<void> addPremiumMealPlans() async {
+    CollectionReference premiumMeals = FirebaseFirestore.instance.collection('meal-plan');
+
+    // Loop through each meal plan and add it to Firestore
+    for (var mealPlanType in mealPlanDetails.keys) {
+      var mealPlan = mealPlanDetails[mealPlanType];
+
+      // Add the meal plan (top-level collection)
+      await premiumMeals.add(mealPlan).then((value) async {
+        premiumMeals.doc(value.id).set({
+          'docId': value.id,
+          'title': mealPlan['title'],
+          'description': mealPlan['description'],
+          'price': mealPlan['price'],
+          'image': mealPlan['image'],
+          'duration': mealPlan['duration'],
+          'meals': mealPlan['meals'],
+        });
+        String docId = value.id;
+
+        // Add meals as a sub-collection (nested collection)
+        CollectionReference mealsCollection = premiumMeals.doc(docId).collection('premium-meals');
+        for (var mealType in mealPlan['mealsList'].keys) {
+          List<dynamic> meals = mealPlan['mealsList'][mealType];
+
+          for (var meal in meals) {
+            await mealsCollection.add({
+              'mealType': mealType,
+              'name': meal['name'],
+              'ingredients': meal['ingredients'],
+              'steps': meal['steps'],
+            });
+          }
+        }
+      }).catchError((error) {
+        print("Failed to add meal plan: $error");
+      });
+    }
+
+    print("All premium meal plans added successfully!");
+  }*/
