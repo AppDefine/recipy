@@ -7,6 +7,7 @@ import 'package:recipy/view/auth/login_screen.dart';
 import 'package:recipy/view/edit_profile_screen.dart';
 import 'package:recipy/view/setting/about_us.dart';
 import 'package:recipy/view/setting/help_support.dart';
+import 'package:recipy/widget/privacy_policy.dart';
 
 class SettingScreen extends StatefulWidget {
   const SettingScreen({super.key});
@@ -71,20 +72,18 @@ class _SettingScreenState extends State<SettingScreen> {
               ),
               const SizedBox(height: 10),
               _buildCardTile(
-                icon: Icons.nightlight,
-                title: "Dark Mode",
-                onTap: () {
-                  // // Toggle the dark mode on and off
-                  // _isDarkMode.value = !_isDarkMode.value;
-                  // Get.changeTheme(_isDarkMode.value ? ThemeData.dark() : ThemeData.light());
-                },
-              ),
-              const SizedBox(height: 10),
-              _buildCardTile(
                 icon: Icons.help,
                 title: "Help & Support",
                 onTap: () {
                   Get.to(()=>HelpSupport());
+                },
+              ),
+              const SizedBox(height: 10),
+              _buildCardTile(
+                icon: Icons.privacy_tip,
+                title: "Privacy Policy",
+                onTap: () {
+                  Get.to(()=>PrivacyPolicy());
                 },
               ),
               const SizedBox(height: 10),

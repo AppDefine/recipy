@@ -97,30 +97,36 @@ class _HelpSupportState extends State<HelpSupport> {
   Widget buildExpandableFaq(String question, String answer) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 8.0),
-      child: ExpansionTile(
-        title: Text(
-          question,
-          style: TextStyle(
-            fontSize: 16,
-            fontWeight: FontWeight.w500,
-            fontFamily: 'Georgia',
-            color: Colors.grey[900],
-          ),
+      child: Container(
+        decoration: BoxDecoration(
+          border: Border.all(color: kPrimaryColor, width: 1.0),
+          borderRadius: BorderRadius.circular(8.0),
         ),
-        children: [
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
-            child: Text(
-              answer,
-              style: TextStyle(
-                fontSize: 15,
-                fontFamily: 'Georgia',
-                color: Colors.grey[800],
-                height: 1.6,
-              ),
+        child: ExpansionTile(
+          title: Text(
+            question,
+            style: TextStyle(
+              fontSize: 16,
+              fontWeight: FontWeight.w500,
+              fontFamily: 'Georgia',
+              color: Colors.grey[900],
             ),
           ),
-        ],
+          children: [
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+              child: Text(
+                answer,
+                style: TextStyle(
+                  fontSize: 15,
+                  fontFamily: 'Georgia',
+                  color: Colors.grey[800],
+                  height: 1.6,
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
