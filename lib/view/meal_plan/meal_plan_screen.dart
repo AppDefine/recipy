@@ -89,17 +89,58 @@ class _MealPlanScreenState extends State<MealPlanScreen> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             // Image
+                            // Container(
+                            //   width: 100,
+                            //   height: 100,
+                            //   decoration: BoxDecoration(
+                            //     borderRadius: BorderRadius.circular(12.0),
+                            //     image: DecorationImage(
+                            //       fit: BoxFit.cover,
+                            //       image: NetworkImage(mealPlan['image']),
+                            //     ),
+                            //   ),
+                            // ),
                             Container(
                               width: 100,
                               height: 100,
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(12.0),
-                                image: DecorationImage(
+                              ),
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.circular(12.0),
+                                child: Image.network(
+                                  mealPlan['image'], // Network image URL
                                   fit: BoxFit.cover,
-                                  image: NetworkImage(mealPlan['image']),
+                                  loadingBuilder: (context, child, loadingProgress) {
+                                    if (loadingProgress == null) {
+                                      // Image has loaded
+                                      return child;
+                                    } else {
+                                      // While the image is loading, show a CircularProgressIndicator
+                                      return Center(
+                                        child: CircularProgressIndicator(
+                                          color: kPrimaryColor,
+                                          value: loadingProgress.expectedTotalBytes != null
+                                              ? loadingProgress.cumulativeBytesLoaded /
+                                              (loadingProgress.expectedTotalBytes ?? 1)
+                                              : null,
+                                        ),
+                                      );
+                                    }
+                                  },
+                                  errorBuilder: (context, error, stackTrace) {
+                                    // Handle error and display a fallback widget
+                                    return Center(
+                                      child: Icon(
+                                        Icons.image,
+                                        color: Colors.red,
+                                      ),
+                                    );
+                                  },
                                 ),
                               ),
                             ),
+
                             const SizedBox(width: 16.0),
                             // Info
                             Expanded(
