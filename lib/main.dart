@@ -45,3 +45,5 @@ class MyApp extends StatelessWidget {
 //In Any Login ,Favourite Remain The Same
 //Folder Structure
 //Image Getting Cropped In Profile Pic
+//Profile Pic In Edit Screen,
+//Update Data after when came back to the setting screen from edit screen

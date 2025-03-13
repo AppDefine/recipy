@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:recipy/utils/constants.dart';
 
 class EditProfileScreen extends StatefulWidget {
@@ -9,11 +11,10 @@ class EditProfileScreen extends StatefulWidget {
 }
 
 class _EditProfileScreenState extends State<EditProfileScreen> {
-  final TextEditingController nameController = TextEditingController(text: "John Doe");
-  final TextEditingController usernameController = TextEditingController(text: "john.doe");
-  final TextEditingController genderController = TextEditingController(text: "Male");
-  final TextEditingController phoneController = TextEditingController(text: "+44 1632 960860");
-  final TextEditingController emailController = TextEditingController(text: "john.doe@example.com");
+  final TextEditingController usernameController = TextEditingController();
+  final TextEditingController genderController = TextEditingController();
+  final TextEditingController phoneController = TextEditingController();
+  final TextEditingController emailController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -35,26 +36,36 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             buildSectionTitle('🖋️ Edit Your Details'),
-            buildTextField("Name", nameController),
             buildTextField("Username", usernameController),
+            buildTextField("Email", emailController),
             buildTextField("Gender", genderController),
             buildTextField("Phone Number", phoneController),
-            buildTextField("Email", emailController),
             SizedBox(height: 20),
             Center(
               child: ElevatedButton(
-                onPressed: () {
+                onPressed: () async {
+                  final pref = Constants.securePreferences();
+                  await pref.write(
+                    key: Constants.email,
+                    value: emailController.text,
+                  );
+                  await pref.write(
+                    key: Constants.name,
+                    value: usernameController.text,
+                  );
                   // Save changes logic
                   print("Saved Details: \n"
-                      "Name: ${nameController.text}\n"
                       "Username: ${usernameController.text}\n"
                       "Gender: ${genderController.text}\n"
                       "Phone: ${phoneController.text}\n"
                       "Email: ${emailController.text}");
+                  Get.back();
+
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: kPrimaryColor,
-                  padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 12),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 40, vertical: 12),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10),
                   ),
