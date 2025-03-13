@@ -42,3 +42,6 @@ class MyApp extends StatelessWidget {
 //Share Recipe with Friends And Family
 //Search , Explore In HomeScreen
 //All Data Correction Of Recipe
+//In Any Login ,Favourite Remain The Same
+//Folder Structure
+//Image Getting Cropped In Profile Pic

@@ -20,6 +20,39 @@ class _SettingScreenState extends State<SettingScreen> {
 
   final _auth = AuthService();
 
+  String name = "";
+  String email = "";
+  String profilePic = "";
+
+  bool isLoading  = true;
+
+  showLoading(){
+    setState(() {
+      isLoading = true;
+    });
+  }
+
+  hideLoading(){
+    setState(() {
+      isLoading = false;
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    setProfileData();
+  }
+
+  setProfileData() async {
+    final pref = Constants.securePreferences();
+    email = await pref.read(key: Constants.email) ?? "";
+    name = await pref.read(key: Constants.name) ?? "";
+    profilePic = await pref.read(key: Constants.profilePic) ?? "";
+    print("------------ ${profilePic}");
+    hideLoading();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,7 +61,9 @@ class _SettingScreenState extends State<SettingScreen> {
         title: const Text("Profile"),
         centerTitle: true,
       ),
-      body: SingleChildScrollView(
+      body: isLoading
+          ? Center(child: CircularProgressIndicator(color: kPrimaryColor))
+          : SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(16.0),
           child: Column(
@@ -36,21 +71,22 @@ class _SettingScreenState extends State<SettingScreen> {
             children: [
               CircleAvatar(
                 radius: 60,
+                backgroundColor: Colors.white,
                 backgroundImage: NetworkImage(
-                  'https://images.unsplash.com/photo-1633332755192-727a05c4013d?q=80&w=1780&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+                  profilePic,
                 ), // Replace with the desired URL
               ),
               const SizedBox(height: 10),
-              const Text(
-                "John Doe",
+              Text(
+                name,
                 style: TextStyle(
                   fontSize: 22,
                   fontWeight: FontWeight.bold,
                 ),
               ),
               const SizedBox(height: 5),
-              const Text(
-                "Text@gmail.com",
+              Text(
+                email,
                 style: TextStyle(
                   fontSize: 16,
                   color: Colors.grey,

@@ -10,6 +10,7 @@ class Constants {
   static const appName = "Recipy";
   static const uid = "uid";
   static const email = "email";
+  static const profilePic = "profilePic";
   static const name = "name";
   static const isLogin = "isLogin";
 

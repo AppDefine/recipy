@@ -85,7 +85,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           final userCredential = await _auth.loginWithGoogle();
 
                           if (userCredential != null) {
-
+                            print("---------------------------- eeeeeeeeeee ${userCredential.user}");
                             await _auth.saveUserData(userCredential.user);
 
                             final pref = Constants.securePreferences();
@@ -100,6 +100,10 @@ class _LoginScreenState extends State<LoginScreen> {
                             await pref.write(
                               key: Constants.name,
                               value: userCredential.user?.displayName,
+                            );
+                            await pref.write(
+                              key: Constants.profilePic,
+                              value: userCredential.user?.photoURL,
                             );
                             await pref.write(
                                 key: Constants.isLogin, value: true.toString());
