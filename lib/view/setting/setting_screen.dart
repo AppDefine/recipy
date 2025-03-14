@@ -4,8 +4,8 @@ import 'package:get/get.dart';
 import 'package:recipy/auth_service.dart';
 import 'package:recipy/utils/constants.dart';
 import 'package:recipy/view/auth/login_screen.dart';
-import 'package:recipy/view/edit_profile_screen.dart';
 import 'package:recipy/view/setting/about_us.dart';
+import 'package:recipy/view/setting/edit_profile_screen.dart';
 import 'package:recipy/view/setting/help_support.dart';
 import 'package:recipy/widget/privacy_policy.dart';
 

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
 import 'package:recipy/view/dashboard_screen.dart';
@@ -17,6 +18,7 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
+    SystemChannels.textInput.invokeMethod('TextInput.hide');
     Future.delayed(const Duration(seconds: 4), _navigate);
   }
 
