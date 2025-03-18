@@ -16,12 +16,8 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
 
   List<TextInputFormatter> inputFormatters = [FilteringTextInputFormatter.deny(RegExp(r'[<>]')),];
 
-  final List<String> genderOptions = ["Male", "Female", "Other"];
-  String? selectedGender; // To store the selected value
-
   final TextEditingController usernameController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
-  final TextEditingController genderController = TextEditingController();
   final TextEditingController phoneController = TextEditingController();
 
   bool isLoading  = true;
@@ -48,8 +44,6 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
     final pref = Constants.securePreferences();
     usernameController.text = await pref.read(key: Constants.name) ?? "";
     emailController.text = await pref.read(key: Constants.email) ?? "";
-    genderController.text = await pref.read(key: Constants.gender) ?? "";
-    selectedGender = await pref.read(key: Constants.gender) ?? "";
     phoneController.text = await pref.read(key: Constants.phoneNumber) ?? "";
     hideLoading();
   }
@@ -64,7 +58,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
           onPressed: () {
-            Navigator.pop(context);
+            Get.back(result: false);
           },
         ),
       ),
@@ -78,7 +72,6 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
             buildSectionTitle('🖋️ Edit Your Details'),
             buildTextField("Username", usernameController,inputFormatters,TextInputType.name,40),
             buildTextField("Email", emailController,inputFormatters,TextInputType.emailAddress,40),
-            buildGenderDropdown(),
             buildTextField("Phone Number", phoneController,[IndianMobileNumberFormatter()],TextInputType.number,10),
             SizedBox(height: 20),
             Center(
@@ -90,10 +83,8 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                   final pref = Constants.securePreferences();
                   await pref.write(key: Constants.name, value: usernameController.text);
                   await pref.write(key: Constants.email, value: emailController.text);
-                  await pref.write(key: Constants.gender, value: genderController.text);
                   await pref.write(key: Constants.phoneNumber, value: phoneController.text);
-
-                  Get.offAll(() => SettingScreen());
+                  Get.back(result: true);
                 },
 
                 style: ElevatedButton.styleFrom(
@@ -129,11 +120,6 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
 
     if (!GetUtils.isEmail(emailController.text.trim())) {
       Constants.showSnackBar("Please enter a valid email address", Colors.red);
-      return false;
-    }
-
-    if (genderController.text.trim().isEmpty) {
-      Constants.showSnackBar("Please select gender", Colors.red);
       return false;
     }
 
@@ -178,37 +164,6 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
         decoration: InputDecoration(
           counterText: "",
           labelText: label,
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(8.0),
-          ),
-          focusedBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(8.0),
-            borderSide: BorderSide(color: kPrimaryColor, width: 2.0),
-          ),
-        ),
-      ),
-    );
-  }
-
-  Widget buildGenderDropdown() {
-    return Padding(
-      padding: const EdgeInsets.only(bottom: 16.0),
-      child: DropdownButtonFormField<String>(
-        value: selectedGender,
-        items: genderOptions.map((String gender) {
-          return DropdownMenuItem<String>(
-            value: gender,
-            child: Text(gender),
-          );
-        }).toList(),
-        onChanged: (String? newValue) {
-          setState(() {
-            selectedGender = newValue;
-            genderController.text = newValue ?? ''; // Update the controller
-          });
-        },
-        decoration: InputDecoration(
-          labelText: "Gender",
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(8.0),
           ),

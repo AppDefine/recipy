@@ -15,7 +15,6 @@ class Constants {
   static const uid = "uid";
   static const email = "email";
   static const phoneNumber = "phoneNumber";
-  static const gender = "gender";
   static const profilePic = "profilePic";
   static const name = "name";
   static const isLogin = "isLogin";

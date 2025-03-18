@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:recipy/auth_service.dart';
+import 'package:recipy/controller/setting_controller.dart';
 import 'package:recipy/utils/constants.dart';
 import 'package:recipy/view/auth/login_screen.dart';
 import 'package:recipy/view/setting/about_us.dart';
@@ -18,39 +19,12 @@ class SettingScreen extends StatefulWidget {
 
 class _SettingScreenState extends State<SettingScreen> {
 
-  final _auth = AuthService();
-
-  String name = "";
-  String email = "";
-  String profilePic = "";
-
-  bool isLoading  = true;
-
-  showLoading(){
-    setState(() {
-      isLoading = true;
-    });
-  }
-
-  hideLoading(){
-    setState(() {
-      isLoading = false;
-    });
-  }
+  SettingController controller = Get.find();
 
   @override
   void initState() {
     super.initState();
-    setProfileData();
-  }
-
-  setProfileData() async {
-    final pref = Constants.securePreferences();
-    email = await pref.read(key: Constants.email) ?? "";
-    name = await pref.read(key: Constants.name) ?? "";
-    profilePic = await pref.read(key: Constants.profilePic) ?? "";
-    print("------------ ${profilePic}");
-    hideLoading();
+    controller.setProfileData();
   }
 
   @override
@@ -61,7 +35,7 @@ class _SettingScreenState extends State<SettingScreen> {
         title: const Text("Profile"),
         centerTitle: true,
       ),
-      body: isLoading
+      body: Obx(() => controller.isLoading.value
           ? Center(child: CircularProgressIndicator(color: kPrimaryColor))
           : SingleChildScrollView(
         child: Padding(
@@ -73,12 +47,12 @@ class _SettingScreenState extends State<SettingScreen> {
                 radius: 60,
                 backgroundColor: Colors.white,
                 backgroundImage: NetworkImage(
-                  profilePic,
+                  controller.profilePic.value,
                 ), // Replace with the desired URL
               ),
               const SizedBox(height: 10),
               Text(
-                name,
+                controller.name.value,
                 style: TextStyle(
                   fontSize: 22,
                   fontWeight: FontWeight.bold,
@@ -86,7 +60,7 @@ class _SettingScreenState extends State<SettingScreen> {
               ),
               const SizedBox(height: 5),
               Text(
-                email,
+                controller.email.value,
                 style: TextStyle(
                   fontSize: 16,
                   color: Colors.grey,
@@ -96,8 +70,13 @@ class _SettingScreenState extends State<SettingScreen> {
               _buildCardTile(
                 icon: Icons.edit,
                 title: "Edit Profile",
-                onTap: () {
-                  Get.to(()=>EditProfileScreen());
+                onTap: () async {
+                  bool isEdit  =  await Get.to(()=>EditProfileScreen());
+                  if(isEdit){
+                    controller.setProfileData();
+                  }else{
+
+                  }
                 },
               ),
               const SizedBox(height: 10),
@@ -135,11 +114,7 @@ class _SettingScreenState extends State<SettingScreen> {
                 width: Get.width,
                 height: Get.width / 8,
                 child: ElevatedButton.icon(
-                  onPressed: () {
-                    final pref = Constants.securePreferences();
-                    pref.deleteAll();
-                    _auth.signOut().then((value) => Get.offAll(()=>LoginScreen()),);
-                  },
+                  onPressed: () => controller.signOut(),
                   style: ElevatedButton.styleFrom(
                     backgroundColor: kPrimaryColor,
                     shape: RoundedRectangleBorder(
@@ -157,7 +132,7 @@ class _SettingScreenState extends State<SettingScreen> {
             ],
           ),
         ),
-      ),
+      ),),
     );
   }
 
