@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:recipy/utils/constants.dart';
 import 'package:recipy/view/setting/setting_screen.dart';
+import 'package:recipy/widget/common_widget.dart';
 
 class EditProfileScreen extends StatefulWidget {
   const EditProfileScreen({super.key});
@@ -70,9 +71,32 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             buildSectionTitle('🖋️ Edit Your Details'),
-            buildTextField("Username", usernameController,inputFormatters,TextInputType.name,40),
-            buildTextField("Email", emailController,inputFormatters,TextInputType.emailAddress,40),
-            buildTextField("Phone Number", phoneController,[IndianMobileNumberFormatter()],TextInputType.number,10),
+            CommonTextField(
+              label: "Username",
+              controller: usernameController,
+              textInputFormatters: inputFormatters, // Ensure this is a valid list of formatters
+              textInputType: TextInputType.name,
+              maxLength: 40,
+            ),
+
+            CommonTextField(
+              label: "Email",
+              controller: emailController,
+              textInputFormatters: inputFormatters,
+              textInputType: TextInputType.emailAddress,
+              maxLength: 40,
+            ),
+            CommonTextField(
+              label: "Phone Number",
+              controller: phoneController,
+              textInputFormatters: [IndianMobileNumberFormatter()],
+              textInputType: TextInputType.number,
+              maxLength: 10,
+            ),
+
+            // buildTextField("Username", usernameController,inputFormatters,TextInputType.name,40),
+            // buildTextField("Email", emailController,inputFormatters,TextInputType.emailAddress,40),
+            // buildTextField("Phone Number", phoneController,[IndianMobileNumberFormatter()],TextInputType.number,10),
             SizedBox(height: 20),
             Center(
               child: ElevatedButton(

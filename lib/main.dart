@@ -46,4 +46,4 @@ class MyApp extends StatelessWidget {
 //Folder Structure
 //Image Getting Cropped In Profile Pic
 //Profile Pic In Edit Screen,
-//Update Data after when came back to the setting screen from edit screen
+//Update Data after when came back to the setting screen from edit screen //done
