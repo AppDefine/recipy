@@ -3,7 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:recipy/utils/constants.dart';
-import 'package:recipy/view/setting/setting_screen.dart';
+import 'package:recipy/ui/setting/setting_screen.dart';
 import 'package:recipy/widget/common_widget.dart';
 
 class EditProfileScreen extends StatefulWidget {

@@ -3,7 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:recipy/auth_service.dart';
 import 'package:recipy/utils/constants.dart';
-import 'package:recipy/view/auth/login_screen.dart';
+import 'package:recipy/ui/auth/login_screen.dart';
 
 class SettingController extends GetxController {
 

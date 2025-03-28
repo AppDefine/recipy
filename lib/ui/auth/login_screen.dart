@@ -5,8 +5,8 @@ import 'package:get/get.dart';
 import 'package:loading_overlay/loading_overlay.dart';
 import 'package:recipy/auth_service.dart';
 import 'package:recipy/controller/login_controller.dart';
+import 'package:recipy/ui/dashboard_screen.dart';
 import 'package:recipy/utils/constants.dart';
-import 'package:recipy/view/dashboard_screen.dart';
 import 'package:recipy/widget/privacy_policy.dart';
 
 class LoginScreen extends StatefulWidget {

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:recipy/controller/meal_plan_controller.dart';
 import 'package:recipy/utils/constants.dart';
-import 'package:recipy/view/meal_plan/meal_plan_explore_screen.dart';
+import 'package:recipy/ui/meal_plan/meal_plan_explore_screen.dart';
 
 class MealPlanScreen extends StatefulWidget {
   const MealPlanScreen({Key? key}) : super(key: key);
