@@ -40,11 +40,11 @@ class MyApp extends StatelessWidget {
 
 //Notification
 //Share Recipe with Friends And Family
-//Search , Explore In HomeScreen
 //All Data Correction Of Recipe
 //In Any Login ,Favourite Remain The Same
-//Folder Structure //working , service structure, firebase
-//Image Getting Cropped In Profile Pic
-//Profile Pic In Edit Screen,
-//Update Data after when came back to the setting screen from edit screen //done
 //cooking screen static data
+
+//Functionality can be added
+//1)Profile Pic In Edit Screen,
+//2)Search Functionality In HomeScreen, *
+//3)

@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:recipy/core/constants/constants.dart';
+import 'package:recipy/presentation/pages/home/all_recipe.dart';
 
 class BannerToExplore extends StatelessWidget {
   const BannerToExplore({super.key});
@@ -39,7 +42,9 @@ class BannerToExplore extends StatelessWidget {
                     backgroundColor: Colors.white,
                     elevation: 0,
                   ),
-                  onPressed: () {},
+                  onPressed: () {
+                    Get.to(()=>AllRecipeScreen());
+                  },
                   child: const Text(
                     "Explore",
                     style: TextStyle(

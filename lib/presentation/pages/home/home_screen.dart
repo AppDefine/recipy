@@ -7,6 +7,7 @@ import 'package:recipy/core/constants/constants.dart';
 import 'package:recipy/core/widget/banner.dart';
 import 'package:recipy/core/widget/my_icon_button.dart';
 import 'package:recipy/presentation/controller/item_controller.dart';
+import 'package:recipy/presentation/pages/home/all_recipe.dart';
 import 'package:recipy/presentation/pages/home/food_items_display.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -81,13 +82,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                       TextButton(
                         onPressed: () {
-                          // Navigator.push(
-                          //   context,
-                          //   MaterialPageRoute(
-                          //     builder: (_) => const ViewAllItems(),
-                          //   ),
-                          // );
-                          ///todo
+                          Get.to(()=>AllRecipeScreen());
                         },
                         child: const Text(
                           "View all",
