@@ -41,8 +41,8 @@ class MyApp extends StatelessWidget {
 //Notification
 //Share Recipe with Friends And Family
 //All Data Correction Of Recipe
-//In Any Login ,Favourite Remain The Same
 //cooking screen static data
+//Should Ask Account Choice After Every Time Logut
 
 //Functionality can be added
 //1)Profile Pic In Edit Screen,

@@ -2,6 +2,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:get/get_rx/src/rx_types/rx_types.dart';
 import 'package:get/get_state_manager/src/simple/get_controllers.dart';
+import 'package:recipy/core/constants/constants.dart';
 
 class ItemController extends GetxController {
 
@@ -14,7 +15,9 @@ class ItemController extends GetxController {
 
   Future<void> loadFavorites() async {
     try {
-      QuerySnapshot snapshot = await _firestore.collection("userFavorite").get();
+      final pref = Constants.securePreferences();
+      var uid = await pref.read(key: Constants.uid);
+      QuerySnapshot snapshot = await _firestore.collection("userFavorite").doc(uid).collection('favProductList').get();
       _favoriteIds.assignAll(snapshot.docs.map((doc) => doc.id).toList());
     } catch (e) {
       print(e.toString());
@@ -39,7 +42,9 @@ class ItemController extends GetxController {
   // Remove favorite from firestore
   Future<void> _removeFavorite(String productId) async {
     try {
-      await _firestore.collection("userFavorite").doc(productId).delete();
+      final pref = Constants.securePreferences();
+      var uid = await pref.read(key: Constants.uid);
+      await _firestore.collection("userFavorite").doc(uid).collection('favProductList').doc(productId).delete();
     } catch (e) {
       print(e.toString());
     }
@@ -48,7 +53,11 @@ class ItemController extends GetxController {
   // add favorites to firestore
   Future<void> _addFavorite(String productId) async {
     try {
-      await _firestore.collection("userFavorite").doc(productId).set({
+      final pref = Constants.securePreferences();
+      var uid = await pref.read(key: Constants.uid);
+      print("----------- uid $uid");
+      await _firestore.collection("userFavorite").doc(uid).collection('favProductList').doc(productId)
+          .set({
         'isFavorite':
         true, // create the userFavorite collection and add item as favorites inf firestore
       });
