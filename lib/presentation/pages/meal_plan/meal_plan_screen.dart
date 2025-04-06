@@ -1,9 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:recipy/controller/meal_plan_controller.dart';
-import 'package:recipy/utils/constants.dart';
-import 'package:recipy/ui/meal_plan/meal_plan_explore_screen.dart';
+import 'package:recipy/core/constants/constants.dart';
+import 'package:recipy/presentation/controller/meal_plan_controller.dart';
+import 'package:recipy/presentation/pages/meal_plan/meal_plan_explore_screen.dart';
 
 class MealPlanScreen extends StatefulWidget {
   const MealPlanScreen({Key? key}) : super(key: key);

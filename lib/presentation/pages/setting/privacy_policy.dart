@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:recipy/utils/constants.dart';
+import 'package:recipy/core/constants/constants.dart';
 
 class PrivacyPolicy extends StatefulWidget {
   @override

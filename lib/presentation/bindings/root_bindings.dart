@@ -1,9 +1,9 @@
 import 'package:get/get.dart';
-import 'package:recipy/controller/item_controller.dart';
-import 'package:recipy/controller/login_controller.dart';
-import 'package:recipy/controller/meal_plan_controller.dart';
-import 'package:recipy/controller/quantity_controller.dart';
-import 'package:recipy/controller/setting_controller.dart';
+import 'package:recipy/presentation/controller/item_controller.dart';
+import 'package:recipy/presentation/controller/login_controller.dart';
+import 'package:recipy/presentation/controller/meal_plan_controller.dart';
+import 'package:recipy/presentation/controller/quantity_controller.dart';
+import 'package:recipy/presentation/controller/setting_controller.dart';
 
 
 class RootBinding implements Bindings {

@@ -2,9 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
-import 'package:recipy/utils/constants.dart';
-import 'package:recipy/ui/setting/setting_screen.dart';
-import 'package:recipy/widget/common_widget.dart';
+import 'package:recipy/core/constants/constants.dart';
+import 'package:recipy/core/widget/common_widget.dart';
 
 class EditProfileScreen extends StatefulWidget {
   const EditProfileScreen({super.key});

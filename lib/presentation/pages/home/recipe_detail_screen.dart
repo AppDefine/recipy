@@ -3,12 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:iconsax/iconsax.dart';
-import 'package:recipy/controller/item_controller.dart';
-import 'package:recipy/controller/quantity_controller.dart';
-import 'package:recipy/ui/home/cooking_screen.dart';
-import 'package:recipy/utils/constants.dart';
-import 'package:recipy/widget/my_icon_button.dart';
-import 'package:recipy/widget/quantity_adjuster.dart';
+import 'package:recipy/core/constants/constants.dart';
+import 'package:recipy/core/widget/my_icon_button.dart';
+import 'package:recipy/core/widget/quantity_adjuster.dart';
+import 'package:recipy/presentation/controller/item_controller.dart';
+import 'package:recipy/presentation/controller/quantity_controller.dart';
+import 'package:recipy/presentation/pages/home/cooking_screen.dart';
 
 class RecipeDetailScreen extends StatefulWidget {
   final DocumentSnapshot<Object?> documentSnapshot;

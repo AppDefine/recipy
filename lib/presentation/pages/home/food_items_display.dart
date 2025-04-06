@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:iconsax/iconsax.dart';
-import 'package:recipy/controller/item_controller.dart';
-import 'package:recipy/ui/home/recipe_detail_screen.dart';
+import 'package:recipy/presentation/controller/item_controller.dart';
+import 'package:recipy/presentation/pages/home/recipe_detail_screen.dart';
 
 class FoodItemsDisplay extends StatefulWidget {
   final DocumentSnapshot<Object?> documentSnapshot;

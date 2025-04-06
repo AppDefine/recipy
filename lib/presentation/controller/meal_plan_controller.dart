@@ -3,7 +3,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
-import 'package:recipy/utils/constants.dart';
+import 'package:recipy/core/constants/constants.dart';
 
 class MealPlanController extends GetxController {
   RxBool isLoading = false.obs;

@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:recipy/utils/constants.dart';
+import 'package:recipy/core/constants/constants.dart';
 
 class HelpSupport extends StatefulWidget {
   @override

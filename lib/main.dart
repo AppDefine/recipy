@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:get/get.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
-import 'package:recipy/bindings/root_bindings.dart';
-import 'package:recipy/utils/constants.dart';
-import 'package:recipy/ui/auth/splash_screen.dart';
+import 'package:recipy/core/constants/constants.dart';
+import 'package:recipy/presentation/bindings/root_bindings.dart';
+import 'package:recipy/presentation/pages/auth/splash_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

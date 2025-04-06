@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:recipy/ui/favourite/favourite_screen.dart';
-import 'package:recipy/ui/home/home_screen.dart';
-import 'package:recipy/utils/constants.dart';
-import 'package:recipy/ui/meal_plan/meal_plan_screen.dart';
-import 'package:recipy/ui/setting/setting_screen.dart';
+import 'package:recipy/core/constants/constants.dart';
+import 'package:recipy/presentation/pages/favourite/favourite_screen.dart';
+import 'package:recipy/presentation/pages/home/home_screen.dart';
+import 'package:recipy/presentation/pages/meal_plan/meal_plan_screen.dart';
+import 'package:recipy/presentation/pages/setting/setting_screen.dart';
 
 class DashboardScreen extends StatefulWidget {
   const DashboardScreen({super.key});

@@ -2,9 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
-import 'package:recipy/ui/dashboard_screen.dart';
-
-import '../../utils/constants.dart';
+import 'package:recipy/core/constants/constants.dart';
+import 'package:recipy/presentation/pages/dashboard_screen.dart';
 import 'login_screen.dart';
 
 class SplashScreen extends StatefulWidget {

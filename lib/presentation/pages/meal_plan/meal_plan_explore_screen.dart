@@ -2,8 +2,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
-import 'package:recipy/utils/constants.dart';
-import 'package:recipy/ui/meal_plan/premium_meal.dart';
+import 'package:recipy/core/constants/constants.dart';
+import 'package:recipy/presentation/pages/meal_plan/premium_meal.dart';
 
 class MealPlanExploreScreen extends StatefulWidget {
   final Map<String, dynamic> mealPlan;

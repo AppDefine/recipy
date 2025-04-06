@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:recipy/utils/constants.dart';
+import 'package:recipy/core/constants/constants.dart';
 
 class PremiumMealScreen extends StatefulWidget {
   final Map<String, dynamic> meal;
