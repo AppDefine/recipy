@@ -8,7 +8,7 @@ import 'package:recipy/controller/quantity_controller.dart';
 import 'package:recipy/ui/home/cooking_screen.dart';
 import 'package:recipy/utils/constants.dart';
 import 'package:recipy/widget/my_icon_button.dart';
-import 'package:recipy/widget/quantity_increment_decrement.dart';
+import 'package:recipy/widget/quantity_adjuster.dart';
 
 class RecipeDetailScreen extends StatefulWidget {
   final DocumentSnapshot<Object?> documentSnapshot;
@@ -192,7 +192,7 @@ class _RecipeDetailScreenState extends State<RecipeDetailScreen> {
                           ],
                         ),
                         const Spacer(),
-                        QuantityIncrementDecrement(
+                        QuantityAdjuster(
                           currentNumber: quantityController.currentNumber,
                           onAdd: () => quantityController.increaseQuantity(),
                           onRemov: () => quantityController.decreaseQuantity(),

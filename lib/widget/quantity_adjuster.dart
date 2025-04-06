@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 
-class QuantityIncrementDecrement extends StatelessWidget {
+class QuantityAdjuster extends StatelessWidget {
   final int currentNumber;
   final Function() onAdd;
   final Function() onRemov;
-  const QuantityIncrementDecrement({
+  const QuantityAdjuster({
     super.key,
     required this.currentNumber,
     required this.onAdd,
