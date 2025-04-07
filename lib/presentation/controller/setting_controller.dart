@@ -1,6 +1,7 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:recipy/core/constants/constants.dart';
 import 'package:recipy/core/services/auth_service.dart';
 import 'package:recipy/presentation/pages/auth/login_screen.dart';
@@ -31,12 +32,32 @@ class SettingController extends GetxController {
     hideLoading();
   }
 
-  signOut(){
+  // signOut() async {
+  //   final pref = Constants.securePreferences();
+  //   pref.deleteAll();
+  //   await GoogleSignIn().signOut();
+  //   final _auth = AuthService();
+  //   await _auth.signOut();
+  //   _auth.signOut().then((value) => Get.offAll(()=>LoginScreen()),);
+  // }
+  signOut() async {
     final pref = Constants.securePreferences();
-    pref.deleteAll();
+    await pref.deleteAll();
+
+    // Force Google to forget the selected account
+    await GoogleSignIn().disconnect();
+
+    // Optional: also sign out from Google (safe cleanup)
+    await GoogleSignIn().signOut();
+
+    // Sign out from Firebase
     final _auth = AuthService();
-    _auth.signOut().then((value) => Get.offAll(()=>LoginScreen()),);
+    await _auth.signOut();
+
+    // Navigate to login screen
+    Get.offAll(() => LoginScreen());
   }
+
 
   final usernameController = TextEditingController().obs;
   final emailController = TextEditingController().obs;

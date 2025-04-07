@@ -81,7 +81,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                       ),
                       TextButton(
-                        onPressed: () {
+                        onPressed: () async {
                           Get.to(()=>AllRecipeScreen());
                         },
                         child: const Text(

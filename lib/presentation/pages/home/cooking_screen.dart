@@ -17,12 +17,7 @@ class _CookingScreenState extends State<CookingScreen> {
     final recipeName = widget.documentSnapshot['name'];
     final ingredients = List<String>.from(widget.documentSnapshot['ingredientName']);
     final ingredientAmounts = List<String>.from(widget.documentSnapshot['ingredientAmount']);
-    final cookingSteps = [
-      "Cook the Oatmeal: In a pot, bring 2 cups of water or milk to a boil. Add 1 cup of oats and stir. Lower the heat and cook for about 5 minutes until the oats soften and absorb the liquid.",
-      "Prepare the Fruits: While the oats cook, chop your favorite fruits, such as bananas, strawberries, blueberries, or apples.",
-      "Mix the Fruits: Once the oatmeal is cooked, remove it from heat. Stir in the chopped fruits of your choice. You can also add dried fruits like raisins or cranberries.",
-      "Add Toppings: Top with a drizzle of honey or maple syrup, a sprinkle of cinnamon, or a handful of nuts for extra flavor and crunch."
-    ];
+    final cookingSteps = List<String>.from(widget.documentSnapshot['cookingSteps']);
     final calories = widget.documentSnapshot['cal'];
     final cookingTime = widget.documentSnapshot['time'];
 
