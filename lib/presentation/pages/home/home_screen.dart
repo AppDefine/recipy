@@ -51,8 +51,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   headerParts(),
-                  mySearchBar(),
-                  // for banner
+                  SizedBox(height: 20,),
                   const BannerToExplore(),
                   const Padding(
                     padding: EdgeInsets.symmetric(
@@ -179,30 +178,6 @@ class _HomeScreenState extends State<HomeScreen> {
           child: CircularProgressIndicator(),
         );
       },
-    );
-  }
-
-  Padding mySearchBar() {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 22),
-      child: TextField(
-        decoration: InputDecoration(
-          filled: true,
-          prefixIcon: const Icon(Iconsax.search_normal),
-          fillColor: Colors.white,
-          border: InputBorder.none,
-          hintText: "Search any recipes",
-          hintStyle: const TextStyle(
-            color: Colors.grey,
-          ),
-          enabledBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(10),
-              borderSide: BorderSide.none),
-          focusedBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(10),
-              borderSide: BorderSide.none),
-        ),
-      ),
     );
   }
 

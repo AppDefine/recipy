@@ -11,7 +11,7 @@ class BannerToExplore extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      height: 170,
+      height: 200,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(15),
         color: kBannerColor,
@@ -58,9 +58,9 @@ class BannerToExplore extends StatelessWidget {
             ),
           ),
           Positioned(
-            top: 0,
+            top: 5,
             bottom: 0,
-            right: -20,
+            right: -30,
             child: Image.network(
               "https://pngimg.com/d/chef_PNG190.png",
             ),
