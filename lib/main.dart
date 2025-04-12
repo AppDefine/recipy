@@ -42,8 +42,3 @@ class MyApp extends StatelessWidget {
 }
 
 //Notification
-
-//Functionality can be added
-//1)Profile Pic In Edit Screen,
-//3)Share Recipe with Friends And Family
-//4)All Data Correction Of Recipe
