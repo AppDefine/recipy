@@ -14,8 +14,14 @@ class FavouriteScreen extends StatefulWidget {
 }
 
 class _FavouriteScreenState extends State<FavouriteScreen> {
-
   ItemController itemController = Get.find();
+  late Future<List<DocumentSnapshot>> favoriteFuture;
+
+  @override
+  void initState() {
+    super.initState();
+    favoriteFuture = fetchFavorites(); // Cache the future
+  }
 
   Future<List<DocumentSnapshot>> fetchFavorites() async {
     // Fetch all favorites at once
@@ -28,14 +34,12 @@ class _FavouriteScreenState extends State<FavouriteScreen> {
 
   @override
   Widget build(BuildContext context) {
-
-
     final favoriteItems = itemController.favoriteIds;
     return Obx(() => Scaffold(
       backgroundColor: kBackgroundColor,
       appBar: AppBar(
         backgroundColor: kPrimaryColor,
-        title: Align(alignment:Alignment.center,child: Text('Favorites')),
+        title: const Align(alignment: Alignment.center, child: Text('Favorites')),
       ),
       body: favoriteItems.isEmpty
           ? const Center(
@@ -48,11 +52,11 @@ class _FavouriteScreenState extends State<FavouriteScreen> {
         ),
       )
           : FutureBuilder<List<DocumentSnapshot>>(
-        future: fetchFavorites(),
+        future: favoriteFuture, // Use the cached future
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return const Center(
-              child: CircularProgressIndicator(color: kPrimaryColor,), // One loader for all
+              child: CircularProgressIndicator(color: kPrimaryColor),
             );
           }
           if (!snapshot.hasData || snapshot.data!.isEmpty) {
@@ -75,7 +79,7 @@ class _FavouriteScreenState extends State<FavouriteScreen> {
               return Padding(
                 padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
                 child: GestureDetector(
-                  onTap: (){
+                  onTap: () {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
@@ -127,7 +131,8 @@ class _FavouriteScreenState extends State<FavouriteScreen> {
                               const SizedBox(height: 5),
                               Row(
                                 children: [
-                                  const Icon(Iconsax.flash_1, size: 16, color: Colors.grey),
+                                  const Icon(Iconsax.flash_1,
+                                      size: 16, color: Colors.grey),
                                   const SizedBox(width: 5),
                                   Text(
                                     "${favoriteItem['cal']} Cal",
@@ -136,8 +141,10 @@ class _FavouriteScreenState extends State<FavouriteScreen> {
                                       color: Colors.grey,
                                     ),
                                   ),
-                                  const Text(" · ", style: TextStyle(color: Colors.grey)),
-                                  const Icon(Iconsax.clock, size: 16, color: Colors.grey),
+                                  const Text(" · ",
+                                      style: TextStyle(color: Colors.grey)),
+                                  const Icon(Iconsax.clock,
+                                      size: 16, color: Colors.grey),
                                   const SizedBox(width: 5),
                                   Text(
                                     "${favoriteItem['time']} Min",
@@ -155,6 +162,9 @@ class _FavouriteScreenState extends State<FavouriteScreen> {
                           icon: const Icon(Icons.delete, color: Colors.red),
                           onPressed: () {
                             itemController.toggleFavorite(favoriteItem);
+                            setState(() {
+                              favoriteFuture = fetchFavorites(); // Refresh future on delete
+                            });
                           },
                         ),
                       ],
@@ -169,3 +179,4 @@ class _FavouriteScreenState extends State<FavouriteScreen> {
     ));
   }
 }
+
