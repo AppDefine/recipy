@@ -1,3 +1,4 @@
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:recipy/core/constants/constants.dart';
 import 'package:recipy/presentation/pages/favourite/favourite_screen.dart';
@@ -26,7 +27,29 @@ class _DashboardScreenState extends State<DashboardScreen> {
       MealPlanScreen(),
       SettingScreen(),
     ];
+    checkAndRequestPermission();
     super.initState();
+  }
+
+  checkAndRequestPermission() async {
+    final pref = Constants.securePreferences();
+      String hasRequestedPermission = await pref.read(key:Constants.isNotificationPermission) ?? "";
+      if (hasRequestedPermission!="true") {
+        await _requestNotificationPermission();
+        await pref.write(key: Constants.isNotificationPermission, value: "true");
+      }
+  }
+
+  Future<void> _requestNotificationPermission() async {
+    FirebaseMessaging messaging = FirebaseMessaging.instance;
+    NotificationSettings settings = await messaging.requestPermission();
+    if (settings.authorizationStatus == AuthorizationStatus.authorized) {
+      print("User granted permission for notifications.");
+    } else if (settings.authorizationStatus == AuthorizationStatus.provisional) {
+      print("User granted provisional permission for notifications.");
+    } else {
+      print("User declined or has not yet responded to notification permission request.");
+    }
   }
 
   @override

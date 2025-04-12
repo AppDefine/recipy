@@ -17,14 +17,14 @@ void main() async {
   runApp(const MyApp());
 }
 
-  Future<void> _setUpStripe() async {
-      WidgetsFlutterBinding.ensureInitialized();
-      Stripe.publishableKey = Constants.stripePublishableKey;
-  }
+Future<void> _setUpStripe() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  Stripe.publishableKey = Constants.stripePublishableKey;
+}
+
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
-
 
   @override
   Widget build(BuildContext context) {
