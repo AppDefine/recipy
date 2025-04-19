@@ -6,13 +6,38 @@ import 'package:get/get.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:recipy/core/constants/constants.dart';
 import 'package:recipy/presentation/bindings/root_bindings.dart';
+import 'package:recipy/presentation/controller/notification_controller.dart';
 import 'package:recipy/presentation/pages/auth/splash_screen.dart';
+import 'package:recipy/presentation/pages/notification_list_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+
+  NotificationController controller = Get.put((NotificationController()));
+
+  // Get FCM token
   final fcmToken = await FirebaseMessaging.instance.getToken();
-  print("------------ fcmToken ${fcmToken}");
+  print("FCM Token: $fcmToken");
+
+
+  FirebaseMessaging.onMessage.listen((RemoteMessage message) {
+    if (message.notification != null) {
+      controller.addNotification(
+        message.notification!.title ?? 'No Title',
+      );
+    }
+  });
+
+  // Handle notifications when app is opened from background
+  FirebaseMessaging.onMessageOpenedApp.listen((RemoteMessage message) {
+    if (message.notification != null) {
+      controller.addNotification(
+        message.notification!.title ?? 'No Title',
+      );
+    }
+  });
+
   await _setUpStripe();
   runApp(const MyApp());
 }
@@ -37,6 +62,9 @@ class MyApp extends StatelessWidget {
         useMaterial3: false,
       ),
       home: const SplashScreen(),
+      routes: {
+        '/notifications': (context) => NotificationListScreen(),
+      },
     );
   }
 }

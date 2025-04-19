@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:recipy/core/constants/constants.dart';
 import 'package:recipy/presentation/controller/setting_controller.dart';
+import 'package:recipy/presentation/pages/notification_list_screen.dart';
 import 'package:recipy/presentation/pages/setting/about_us.dart';
 import 'package:recipy/presentation/pages/setting/edit_profile_screen.dart';
 import 'package:recipy/presentation/pages/setting/help_support.dart';
@@ -82,7 +83,9 @@ class _SettingScreenState extends State<SettingScreen> {
               _buildCardTile(
                 icon: Icons.notifications,
                 title: "Notifications",
-                onTap: () {},
+                onTap: () {
+                  Get.to(() => NotificationListScreen());
+                },
               ),
               const SizedBox(height: 10),
               _buildCardTile(

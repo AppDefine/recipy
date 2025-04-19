@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:recipy/core/constants/constants.dart';
 
 class CookingScreen extends StatefulWidget {
   final DocumentSnapshot<Object?> documentSnapshot;
@@ -24,23 +25,28 @@ class _CookingScreenState extends State<CookingScreen> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        backgroundColor: Colors.white,
-        elevation: 0,
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back_ios_new, color: Colors.black),
-          onPressed: () => Navigator.pop(context),
-        ),
-        title: Text(
-          recipeName,
-          style: const TextStyle(fontSize: 22, fontWeight: FontWeight.bold, color: Colors.black),
-        ),
-        actions: [
-          IconButton(
-            icon: const Icon(Iconsax.notification, color: Colors.black),
-            onPressed: () {},
-          ),
-        ],
+        backgroundColor: kPrimaryColor,
+        centerTitle: true,
+        title: Text(recipeName),
       ),
+      // appBar: AppBar(
+      //   backgroundColor: Colors.white,
+      //   elevation: 0,
+      //   leading: IconButton(
+      //     icon: const Icon(Icons.arrow_back_ios_new, color: Colors.black),
+      //     onPressed: () => Navigator.pop(context),
+      //   ),
+      //   title: Text(
+      //     recipeName,
+      //     style: const TextStyle(fontSize: 22, fontWeight: FontWeight.bold, color: Colors.black),
+      //   ),
+      //   // actions: [
+      //   //   IconButton(
+      //   //     icon: const Icon(Iconsax.notification, color: Colors.black),
+      //   //     onPressed: () {},
+      //   //   ),
+      //   // ],
+      // ),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),

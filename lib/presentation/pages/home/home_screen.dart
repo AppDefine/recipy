@@ -9,6 +9,7 @@ import 'package:recipy/core/widget/my_icon_button.dart';
 import 'package:recipy/presentation/controller/item_controller.dart';
 import 'package:recipy/presentation/pages/home/all_recipe.dart';
 import 'package:recipy/presentation/pages/home/food_items_display.dart';
+import 'package:recipy/presentation/pages/notification_list_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -195,7 +196,9 @@ class _HomeScreenState extends State<HomeScreen> {
         const Spacer(),
         MyIconButton(
           icon: Iconsax.notification,
-          pressed: () {},
+          pressed: () {
+            Get.to(() => NotificationListScreen());
+          },
         ),
       ],
     );

@@ -67,15 +67,6 @@ class _LoginScreenState extends State<LoginScreen> {
                   child: Column(
                     children: [
                       SignInButton(
-                        icon: Icons.facebook,
-                        label: 'Continue with Facebook',
-                        color: Colors.blue.shade800,
-                        textColor: Colors.white,
-                        onTap: () async {
-                          print('Sign in with Facebook');
-                        },
-                      ),
-                      SignInButton(
                         icon: Icons.email,
                         label: 'Continue with Google',
                         color: Colors.red.shade600,
@@ -111,15 +102,6 @@ class _LoginScreenState extends State<LoginScreen> {
                             Get.offAll(() => DashboardScreen());
                           }
                           print('Sign in with Google');
-                        },
-                      ),
-                      SignInButton(
-                        icon: Icons.mail,
-                        label: 'Sign up with Email',
-                        color: kPrimaryColor,
-                        textColor: Colors.white,
-                        onTap: () async {
-                          print('Sign up with Email');
                         },
                       ),
                     ],

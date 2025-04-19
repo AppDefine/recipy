@@ -295,19 +295,6 @@ class _RecipeDetailScreenState extends State<RecipeDetailScreen> {
                   },
                 ),
               ),
-              const Spacer(),
-              Container(
-                height: 40,
-                width: 40,
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: Colors.white,
-                ),
-                child: MyIconButton(
-                  icon: Iconsax.notification,
-                  pressed: () {},
-                ),
-              ),
             ],
           ),
         ),
