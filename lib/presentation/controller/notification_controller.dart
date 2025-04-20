@@ -13,13 +13,15 @@ class NotificationController extends GetxController {
     _loadNotifications(); // Load notifications on initialization
   }
 
-  // Add a new notification
+  // Add a new notification with duplicate check
   void addNotification(String message) {
-    if (notifications.length >= maxNotifications) {
-      notifications.removeAt(0); // Remove the oldest notification
+    if (!notifications.contains(message)) {
+      if (notifications.length >= maxNotifications) {
+        notifications.removeAt(0); // Remove the oldest notification
+      }
+      notifications.add(message);
+      _saveNotifications(); // Save the entire list
     }
-    notifications.add(message);
-    _saveNotifications(); // Save the entire list
   }
 
   // Save the list of notifications to secure storage

@@ -20,9 +20,14 @@ void main() async {
 
   NotificationController controller = Get.put((NotificationController()));
 
-  // Get FCM token
-  final fcmToken = await FirebaseMessaging.instance.getToken();
-  print("FCM Token: $fcmToken");
+  // // Get FCM token
+  // final fcmToken = await FirebaseMessaging.instance.getToken();
+  // print("FCM Token: $fcmToken");
+
+  // Subscribe to topic
+  const topicName = "recipy"; // Replace with your topic name
+  await FirebaseMessaging.instance.subscribeToTopic(topicName);
+  print("Subscribed to topic: $topicName");
 
 
   FirebaseMessaging.onMessage.listen((RemoteMessage message) {
@@ -33,12 +38,12 @@ void main() async {
     }
   });
 
-  // Handle notifications when app is opened from background
   FirebaseMessaging.onMessageOpenedApp.listen((RemoteMessage message) {
     if (message.notification != null) {
-      controller.addNotification(
-        message.notification!.title ?? 'No Title',
-      );
+      final title = message.notification!.title ?? 'No Title';
+      if (!controller.notifications.contains(title)) {
+        controller.addNotification(title);
+      }
     }
   });
 
@@ -63,13 +68,22 @@ Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
       notifications = decodedNotifications.cast<String>();
     }
 
-    notifications.add(message.notification!.title ?? 'No Title');
-    await prefs.write(
-      key: Constants.notificationList,
-      value: jsonEncode(notifications),
-    );
+    // Prevent duplicate notification
+    const maxNotifications = 10;
+    final title = message.notification!.title ?? 'No Title';
+    if (!notifications.contains(title)) {
+      if (notifications.length >= maxNotifications) {
+        notifications.removeAt(0); // Remove the oldest notification
+      }
+      notifications.add(title);
+      await prefs.write(
+        key: Constants.notificationList,
+        value: jsonEncode(notifications),
+      );
+    }
   }
 }
+
 
 Future<void> _setUpStripe() async {
   WidgetsFlutterBinding.ensureInitialized();
