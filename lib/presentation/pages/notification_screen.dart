@@ -4,14 +4,14 @@ import 'package:recipy/core/constants/constants.dart';
 import 'package:recipy/presentation/controller/notification_controller.dart';
 import 'package:animate_do/animate_do.dart';
 
-class NotificationListScreen extends StatefulWidget {
-  const NotificationListScreen({super.key});
+class NotificationScreen extends StatefulWidget {
+  const NotificationScreen({super.key});
 
   @override
-  State<NotificationListScreen> createState() => _NotificationListScreenState();
+  State<NotificationScreen> createState() => _NotificationScreenState();
 }
 
-class _NotificationListScreenState extends State<NotificationListScreen> {
+class _NotificationScreenState extends State<NotificationScreen> {
   @override
   Widget build(BuildContext context) {
     final NotificationController controller = Get.find<NotificationController>();

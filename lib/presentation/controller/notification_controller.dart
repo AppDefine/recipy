@@ -5,6 +5,7 @@ import 'package:recipy/core/constants/constants.dart';
 
 class NotificationController extends GetxController {
   RxList<String> notifications = <String>[].obs;
+  static const int maxNotifications = 10;
 
   @override
   void onInit() {
@@ -14,6 +15,9 @@ class NotificationController extends GetxController {
 
   // Add a new notification
   void addNotification(String message) {
+    if (notifications.length >= maxNotifications) {
+      notifications.removeAt(0); // Remove the oldest notification
+    }
     notifications.add(message);
     _saveNotifications(); // Save the entire list
   }

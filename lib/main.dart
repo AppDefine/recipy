@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
@@ -8,11 +10,13 @@ import 'package:recipy/core/constants/constants.dart';
 import 'package:recipy/presentation/bindings/root_bindings.dart';
 import 'package:recipy/presentation/controller/notification_controller.dart';
 import 'package:recipy/presentation/pages/auth/splash_screen.dart';
-import 'package:recipy/presentation/pages/notification_list_screen.dart';
+import 'package:recipy/presentation/pages/notification_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+
+  FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
 
   NotificationController controller = Get.put((NotificationController()));
 
@@ -38,8 +42,33 @@ void main() async {
     }
   });
 
+  final initialMessage = await FirebaseMessaging.instance.getInitialMessage();
+  if (initialMessage != null && initialMessage.notification != null) {
+    controller.addNotification(initialMessage.notification!.title ?? 'No Title');
+  }
+
   await _setUpStripe();
   runApp(const MyApp());
+}
+
+Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
+  await Firebase.initializeApp();
+  if (message.notification != null) {
+    final prefs = Constants.securePreferences();
+    final storedData = await prefs.read(key: Constants.notificationList);
+    List<String> notifications = [];
+
+    if (storedData != null) {
+      final decodedNotifications = jsonDecode(storedData) as List<dynamic>;
+      notifications = decodedNotifications.cast<String>();
+    }
+
+    notifications.add(message.notification!.title ?? 'No Title');
+    await prefs.write(
+      key: Constants.notificationList,
+      value: jsonEncode(notifications),
+    );
+  }
 }
 
 Future<void> _setUpStripe() async {
@@ -63,7 +92,7 @@ class MyApp extends StatelessWidget {
       ),
       home: const SplashScreen(),
       routes: {
-        '/notifications': (context) => NotificationListScreen(),
+        '/notifications': (context) => NotificationScreen(),
       },
     );
   }
