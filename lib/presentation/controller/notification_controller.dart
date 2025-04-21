@@ -3,8 +3,25 @@ import 'package:get/get.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:recipy/core/constants/constants.dart';
 
+class NotificationItem {
+  final String title;
+  final String text;
+
+  NotificationItem({required this.title, required this.text});
+
+  Map<String, dynamic> toJson() => {
+    'title': title,
+    'text': text,
+  };
+
+  factory NotificationItem.fromJson(Map<String, dynamic> json) => NotificationItem(
+    title: json['title'],
+    text: json['text'],
+  );
+}
+
 class NotificationController extends GetxController {
-  RxList<String> notifications = <String>[].obs;
+  RxList<NotificationItem> notifications = <NotificationItem>[].obs;
   static const int maxNotifications = 10;
 
   @override
@@ -13,34 +30,36 @@ class NotificationController extends GetxController {
     _loadNotifications(); // Load notifications on initialization
   }
 
-  // Add a new notification with duplicate check
-  void addNotification(String message) {
-    if (!notifications.contains(message)) {
+  // Add a new notification with named parameters
+  void addNotification({required String title, required String text}) {
+    if (!notifications.any((item) => item.title == title)) {
       if (notifications.length >= maxNotifications) {
         notifications.removeAt(0); // Remove the oldest notification
       }
-      notifications.add(message);
-      _saveNotifications(); // Save the entire list
+      notifications.add(NotificationItem(title: title, text: text));
+      _saveNotifications();
     }
   }
 
-  // Save the list of notifications to secure storage
   Future<void> _saveNotifications() async {
     final pref = Constants.securePreferences();
-    final encodedNotifications = jsonEncode(notifications); // Serialize the list to JSON
+    final encodedNotifications = jsonEncode(
+      notifications.map((item) => item.toJson()).toList(),
+    );
     await pref.write(
       key: Constants.notificationList,
       value: encodedNotifications,
     );
   }
 
-  // Load notifications from secure storage
   Future<void> _loadNotifications() async {
     final pref = Constants.securePreferences();
     final storedData = await pref.read(key: Constants.notificationList);
     if (storedData != null) {
-      final decodedNotifications = jsonDecode(storedData) as List<dynamic>; // Deserialize JSON
-      notifications.value = decodedNotifications.cast<String>(); // Cast to List<String>
+      final decodedList = jsonDecode(storedData) as List<dynamic>;
+      notifications.value = decodedList
+          .map((item) => NotificationItem.fromJson(item as Map<String, dynamic>))
+          .toList();
     }
   }
 }

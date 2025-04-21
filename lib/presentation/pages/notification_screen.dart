@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:recipy/core/constants/constants.dart';
 import 'package:recipy/presentation/controller/notification_controller.dart';
 import 'package:animate_do/animate_do.dart';
+import 'package:recipy/presentation/pages/notification/notification_details_screen.dart';
 
 class NotificationScreen extends StatefulWidget {
   const NotificationScreen({super.key});
@@ -20,7 +21,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
       appBar: AppBar(
         backgroundColor: kPrimaryColor,
         centerTitle: true,
-        title: Text("Notifications"),
+        title: const Text("Notifications"),
       ),
       body: Obx(
             () => controller.notifications.isEmpty
@@ -92,24 +93,30 @@ class _NotificationScreenState extends State<NotificationScreen> {
                 ),
               ),
               title: Text(
-                notification,
+                notification.title,
                 style: const TextStyle(
                   fontSize: 16,
                   fontWeight: FontWeight.w600,
                   color: Colors.black87,
                 ),
               ),
-              // trailing: Icon(
-              //   Icons.arrow_forward_ios,
-              //   size: 16,
-              //   color: Colors.grey[400],
-              // ),
+              subtitle: Text(
+                notification.text,
+                style: const TextStyle(
+                  fontSize: 14,
+                  color: Colors.black54,
+                ),
+              ),
+              trailing: Icon(
+                Icons.arrow_forward_ios,
+                size: 16,
+                color: Colors.grey[400],
+              ),
               onTap: () {
-                // Get.snackbar(
-                //   notification,
-                //   "You tapped on this notification",
-                //   snackPosition: SnackPosition.BOTTOM,
-                // );
+                Get.to(() => NotificationDetailsScreen(
+                  title: notification.title,
+                  text: notification.text,
+                ));
               },
             ),
           ),
